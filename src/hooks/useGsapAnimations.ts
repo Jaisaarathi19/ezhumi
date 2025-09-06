@@ -122,9 +122,9 @@ export const useGsapAnimations = () => {
         });
 
         // Active section tracking for navigation
-        const sections = ['#home', '#about', '#themes', '#faqs', '#contact'];
+        const sections = ['#home', '#about', '#themes', '#timeline', '#faqs', '#contact'];
         
-        sections.forEach((section, index) => {
+        sections.forEach((section) => {
           const element = document.querySelector(section);
           if (element) {
             ScrollTrigger.create({
@@ -157,9 +157,9 @@ export const useGsapAnimations = () => {
 
     // Cleanup function
     return () => {
-      const ScrollTrigger = (window as any).ScrollTrigger;
+      const ScrollTrigger = (window as { ScrollTrigger?: { getAll(): { kill(): void }[] } }).ScrollTrigger;
       if (ScrollTrigger) {
-        ScrollTrigger.getAll().forEach((trigger: any) => trigger.kill());
+        ScrollTrigger.getAll().forEach((trigger: { kill(): void }) => trigger.kill());
       }
     };
   }, []);
@@ -179,7 +179,7 @@ export const useGsapAnimations = () => {
         { x: '100%', opacity: 0 },
         { x: '0%', opacity: 1, duration: 0.5, ease: 'power3.out' }
       );
-    } catch (error) {
+    } catch {
       console.log('GSAP not available for menu animation');
     }
   };
@@ -202,7 +202,7 @@ export const useGsapAnimations = () => {
         ease: 'power3.in',
         onComplete
       });
-    } catch (error) {
+    } catch {
       console.log('GSAP not available for menu animation');
       onComplete?.();
     }
@@ -220,7 +220,7 @@ export const useGsapAnimations = () => {
         duration: 0.3,
         ease: 'power2.out'
       });
-    } catch (error) {
+    } catch {
       console.log('GSAP not available for button animation');
     }
   };

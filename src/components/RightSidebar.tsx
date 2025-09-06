@@ -1,21 +1,20 @@
 'use client';
 
-import { useRef } from 'react';
-import { useGsapAnimations } from '@/hooks/useGsapAnimations';
-
 interface RightSidebarProps {
   onMenuToggle: () => void;
 }
 
 export const RightSidebar: React.FC<RightSidebarProps> = ({ onMenuToggle }) => {
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const { animateMenuButtonHover } = useGsapAnimations();
+  // Removed unused variables for now - can be re-added when menu hover animations are implemented
+  // const menuButtonRef = useRef<HTMLButtonElement>(null);
+  // const { animateMenuButtonHover } = useGsapAnimations();
 
-  const handleMenuHover = (isHovering: boolean) => {
-    if (menuButtonRef.current) {
-      animateMenuButtonHover(menuButtonRef.current, isHovering);
-    }
-  };
+  // Commented out for now - can be used for future menu hover animations
+  // const handleMenuHover = (isHovering: boolean) => {
+  //   if (menuButtonRef.current) {
+  //     animateMenuButtonHover(menuButtonRef.current, isHovering);
+  //   }
+  // };
 
   const handleScrollToAbout = () => {
     const aboutSection = document.querySelector('#about');

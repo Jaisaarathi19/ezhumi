@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Hero } from '@/components/Hero';
 import { TopHeader } from '@/components/TopHeader';
 
@@ -24,9 +25,11 @@ export default function Home() {
             {/* Left side - Image */}
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-green-300/30">
-                <img 
+                <Image 
                   src="/media/poster.jpg" 
                   alt="Ezhumi Hackathon Poster" 
+                  width={600}
+                  height={400}
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/20 to-transparent"></div>
@@ -44,7 +47,7 @@ export default function Home() {
                 </h2>
                 <div className="space-y-6 text-lg md:text-xl leading-relaxed text-green-700">
                   <p className="font-medium">
-                    <span className="text-green-800 font-bold">Ezhumi isn't just a word. It's a wake-up call.</span> 
+                    <span className="text-green-800 font-bold">Ezhumi isn&apos;t just a word. It&apos;s a wake-up call.</span> 
                     {" "}A call for students to rise, build, and make a difference.
                   </p>
                   <p>
@@ -215,7 +218,7 @@ export default function Home() {
           <div className="absolute -top-16 -right-16 w-32 h-32 bg-green-300/20 rounded-full blur-xl"></div>
           <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-green-400/20 rounded-full blur-xl"></div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center text-green-800 relative z-10">FAQ's</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center text-green-800 relative z-10">FAQ&apos;s</h2>
           
           <div className="space-y-6 relative z-10">
             {[
@@ -444,7 +447,7 @@ export default function Home() {
             <div className="lg:col-span-2">
               <h2 className="text-4xl font-bold text-white mb-4 tracking-wider">EZHUMI</h2>
               <p className="text-green-200/80 text-sm leading-relaxed mb-6 max-w-md">
-                Empowering agricultural innovation through technology. Join us in creating sustainable solutions for tomorrow's farming challenges.
+                Empowering agricultural innovation through technology. Join us in creating sustainable solutions for tomorrow&apos;s farming challenges.
               </p>
               <div className="flex space-x-4">
                 <a href="mailto:contact@ezhumi.com" className="w-10 h-10 bg-green-800/50 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors duration-300 group">
@@ -474,7 +477,7 @@ export default function Home() {
                 <li><a href="#about" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">About</a></li>
                 <li><a href="#themes" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Themes</a></li>
                 <li><a href="#timeline" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Timeline</a></li>
-                <li><a href="#faqs" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">FAQ's</a></li>
+                <li><a href="#faqs" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">FAQ&apos;s</a></li>
                 <li><a href="#contact" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Contact</a></li>
               </ul>
             </div>

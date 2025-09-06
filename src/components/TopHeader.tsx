@@ -99,7 +99,7 @@ export const TopHeader: React.FC = () => {
                   Timeline
                 </a>
                 <a href="#faqs" className="block text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  FAQ's
+                  FAQ&apos;s
                 </a>
                 <a href="#contact" className="block text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
                   Contact
