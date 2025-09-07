@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Timeline Section */}
-      <section id="timeline" className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 text-green-900 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+      <section id="timeline" className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 text-green-900 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="max-w-6xl w-full relative">
           {/* Background decorative elements */}
           <div className="absolute -top-16 -left-16 w-32 h-32 bg-green-300/20 rounded-full blur-xl"></div>
@@ -145,8 +145,8 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10 text-green-800">Event Timeline</h2>
           
           <div className="relative z-10">
-            {/* Timeline Line */}
-            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-green-400 transform sm:-translate-x-1/2"></div>
+            {/* Timeline Line - Better mobile positioning */}
+            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 bg-green-400 transform sm:-translate-x-1/2"></div>
             
             <div className="space-y-8 sm:space-y-12">
               {[
@@ -187,21 +187,37 @@ export default function Home() {
                   time: "Ongoing"
                 }
               ].map((event, index) => (
-                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
-                  {/* Timeline dot */}
-                  <div className="absolute left-4 sm:left-1/2 w-4 h-4 bg-green-600 rounded-full border-4 border-white shadow-lg transform sm:-translate-x-1/2 z-10"></div>
+                <div key={index} className="relative">
+                  {/* Timeline dot - Properly aligned with line */}
+                  <div className="absolute left-5 sm:left-1/2 top-6 w-3 h-3 sm:w-4 sm:h-4 bg-green-600 rounded-full border-2 sm:border-4 border-white shadow-lg transform sm:-translate-x-1/2 z-10"></div>
                   
-                  {/* Content */}
-                  <div className={`ml-12 sm:ml-0 sm:w-1/2 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
-                    <div className="bg-white/70 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-green-200 shadow-md hover:shadow-lg transition-all duration-300">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 className="text-lg sm:text-xl font-semibold text-green-800 mb-1 sm:mb-0">{event.title}</h3>
-                        <span className="text-xs sm:text-sm text-green-600 font-medium bg-green-100 px-2 py-1 rounded-full self-start sm:self-center">
+                  {/* Mobile Layout: Clean single column */}
+                  <div className="sm:hidden">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-green-200 shadow-md hover:shadow-lg transition-all duration-300 relative ml-10 hover:scale-[1.01] hover:bg-white/90">
+                      <div className="space-y-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <h3 className="text-lg font-bold text-green-800 leading-tight flex-1">{event.title}</h3>
+                          <span className="text-xs text-green-600 font-semibold bg-green-100 px-3 py-1.5 rounded-full whitespace-nowrap flex-shrink-0">
+                            {event.time}
+                          </span>
+                        </div>
+                        <p className="text-sm text-green-700 font-semibold">{event.date}</p>
+                        <p className="text-sm text-green-600 leading-relaxed">{event.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Desktop Layout: Alternating sides */}
+                  <div className={`hidden sm:block sm:w-1/2 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
+                    <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-green-200 shadow-md hover:shadow-lg transition-all duration-300">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                        <h3 className="text-xl font-semibold text-green-800 mb-2 sm:mb-0">{event.title}</h3>
+                        <span className="text-sm text-green-600 font-medium bg-green-100 px-3 py-1.5 rounded-full self-start sm:self-center">
                           {event.time}
                         </span>
                       </div>
-                      <p className="text-sm sm:text-base text-green-700 font-medium mb-2">{event.date}</p>
-                      <p className="text-sm sm:text-base text-green-600 leading-relaxed">{event.description}</p>
+                      <p className="text-base text-green-700 font-medium mb-3">{event.date}</p>
+                      <p className="text-base text-green-600 leading-relaxed">{event.description}</p>
                     </div>
                   </div>
                 </div>

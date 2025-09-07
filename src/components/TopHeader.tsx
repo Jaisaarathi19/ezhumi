@@ -45,8 +45,8 @@ export const TopHeader: React.FC = () => {
               </h1>
             </div>
 
-            {/* Language Switcher */}
-            <div className="language-switcher flex items-center space-x-2 text-sm font-light text-white/80 font-grotesk">
+            {/* Language Switcher - Hidden on mobile */}
+            <div className="language-switcher hidden sm:flex items-center space-x-2 text-sm font-light text-white/80 font-grotesk">
               {languages.map((lang, index) => (
                 <div key={lang.code} className="flex items-center">
                   <button
@@ -104,6 +104,33 @@ export const TopHeader: React.FC = () => {
                 <a href="#contact" className="block text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
                   Contact
                 </a>
+                
+                {/* Language Switcher - Mobile only */}
+                <div className="pt-8 border-t border-white/20">
+                  <div className="text-sm text-white/70 mb-4 font-grotesk">Language</div>
+                  <div className="flex items-center justify-center space-x-4">
+                    {languages.map((lang, index) => (
+                      <div key={lang.code} className="flex items-center">
+                        <button
+                          onClick={() => {
+                            setSelectedLanguage(lang.code);
+                            toggleMenu();
+                          }}
+                          className={`transition-colors duration-300 px-4 py-2 rounded-lg text-lg font-medium ${
+                            selectedLanguage === lang.code
+                              ? 'text-white border-2 border-green-500 bg-green-600 shadow-md'
+                              : 'text-white/70 border-2 border-white/30 hover:text-white hover:border-green-400 hover:bg-green-600/20'
+                          }`}
+                        >
+                          {lang.code}
+                        </button>
+                        {index < languages.length - 1 && (
+                          <span className="text-white/50 mx-2">|</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </nav>
           </div>
