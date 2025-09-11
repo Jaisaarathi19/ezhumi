@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "themes": "Themes",
+    "timeline": "Timeline",
+    "faqs": "FAQ's",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "EZHUMI",
+    "subtitle": "Rise. Build. Transform.",
+    "description": "Join the agricultural revolution. 48 hours to innovate solutions that will transform farming and empower communities.",
+    "registerButton": "Register Now",
+    "learnMoreButton": "Learn More"
+  },
+  "about": {
+    "title": "About Ezhumi",
+    "subtitle": "Your journey from registration to innovation starts here",
+    "wakeUpCall": "Ezhumi isn't just a word. It's a wake-up call.",
+    "callToAction": "A call for students to rise, build, and make a difference.",
+    "description1": "The title represents the rise of innovation in agriculture, the empowerment of farmers, and the growth of sustainable solutions for society.",
+    "description2": "With an expected participation of 150+ teams and 150+ unique ideas, it is aimed at empowering innovators, students, and future entrepreneurs to solve real-world agricultural challenges through technology and innovation.",
+    "incubationInfo": "The top 7 solutions will be incubated in our incubation cell, giving them the necessary mentorship and resources to create a tangible impact.",
+    "stats": {
+      "teams": "Teams Expected",
+      "incubation": "Incubation Spots",
+      "hours": "Hours to Innovate"
+    }
+  },
+  "themes": {
+    "title": "Themes",
+    "smartFarming": {
+      "title": "Smart Farming",
+      "description": "IoT solutions for precision agriculture and automated farming systems."
+    },
+    "sustainableAgriculture": {
+      "title": "Sustainable Agriculture",
+      "description": "Eco-friendly practices and technologies for sustainable farming."
+    },
+    "supplyChain": {
+      "title": "Supply Chain",
+      "description": "Blockchain and AI solutions for transparent and efficient supply chains."
+    },
+    "cropMonitoring": {
+      "title": "Crop Monitoring",
+      "description": "Drone and satellite technologies for real-time crop health monitoring."
+    },
+    "marketAccess": {
+      "title": "Market Access",
+      "description": "Digital platforms connecting farmers directly with consumers and markets."
+    },
+    "climateResilience": {
+      "title": "Climate Resilience",
+      "description": "Solutions to help farmers adapt to climate change challenges."
+    }
+  },
+  "timeline": {
+    "title": "Event Timeline",
+    "subtitle": "Your journey from registration to innovation starts here",
+    "events": {
+      "registrationOpens": {
+        "title": "Registration Opens",
+        "description": "Team registration and idea submission begins. Form your teams and get ready to innovate!",
+        "time": "9:00 AM"
+      },
+      "registrationDeadline": {
+        "title": "Registration Deadline",
+        "description": "Last date for team registration and initial idea submission. Don't miss out!",
+        "time": "11:59 PM"
+      },
+      "teamSelection": {
+        "title": "Team Selection",
+        "description": "Selected teams will be announced. Confirmation emails sent to all participants.",
+        "time": "6:00 PM"
+      },
+      "hackathonWeekend": {
+        "title": "Hackathon Weekend",
+        "description": "48-hour intensive hackathon begins. Build, innovate, and create groundbreaking solutions!",
+        "time": "Day 1: 9:00 AM"
+      },
+      "finalPresentations": {
+        "title": "Final Presentations",
+        "description": "Teams present their solutions to expert judges. Winners announced and prizes awarded.",
+        "time": "4:00 PM"
+      },
+      "incubationProgram": {
+        "title": "Incubation Program",
+        "description": "Top 7 solutions enter our incubation program with mentorship and resources.",
+        "time": "Ongoing"
+      }
+    },
+    "mainEvent": "Main Event - Don't miss this!",
+    "continueJourney": "Your innovation journey continues..."
+  },
+  "faqs": {
+    "title": "FAQ's",
+    "questions": {
+      "whatIs": {
+        "question": "What is the Ezhumi Hackathon about?",
+        "answer": "Ezhumi is a 48-hour agriculture-focused hackathon where participants develop innovative solutions for farming challenges using technology, AI, IoT, and sustainable practices."
+      },
+      "whoCanParticipate": {
+        "question": "Who can participate in the hackathon?",
+        "answer": "The hackathon is open to students, professionals, farmers, tech enthusiasts, and anyone passionate about agricultural innovation. Teams can be formed with members from diverse backgrounds."
+      },
+      "mainThemes": {
+        "question": "What are the main themes for the hackathon?",
+        "answer": "Our main themes include Smart Farming, Supply Chain Management, Crop Monitoring, Market Access, and Climate Resilience solutions for modern agriculture."
+      },
+      "prizes": {
+        "question": "What is the prize pool and how are winners selected?",
+        "answer": "We have a total prize pool of ₹1L+ with multiple categories. Winners are selected based on innovation, feasibility, impact on agriculture, and presentation quality by our expert jury panel."
+      },
+      "hardware": {
+        "question": "Do I need to bring my own hardware or software?",
+        "answer": "We provide basic infrastructure, WiFi, and development environments. However, participants are encouraged to bring their own laptops and any specialized hardware they might need for their projects."
+      }
+    }
+  }
+}

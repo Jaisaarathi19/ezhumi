@@ -2,11 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 import { Hero } from '@/components/Hero';
 import { TopHeader } from '@/components/TopHeader';
 import { Timeline } from '@/components/Timeline';
 
 export default function Home() {
+  const { t } = useTranslation('common');
   return (
     <main className="relative">
       {/* Top Header */}
@@ -45,26 +47,21 @@ export default function Home() {
             <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 text-green-800 leading-tight text-center lg:text-left">
-                  About Ezhumi
+                  {t('about.title')}
                 </h2>
                 <div className="space-y-4 lg:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-green-700">
                   <p className="font-medium">
-                    <span className="text-green-800 font-bold">Ezhumi isn&apos;t just a word. It&apos;s a wake-up call.</span> 
-                    {" "}A call for students to rise, build, and make a difference.
+                    <span className="text-green-800 font-bold">{t('about.wakeUpCall')}</span> 
+                    {" "}{t('about.callToAction')}
                   </p>
                   <p>
-                    The title represents the <strong>rise of innovation in agriculture</strong>, the empowerment of farmers, 
-                    and the growth of sustainable solutions for society.
+                    {t('about.description1')}
                   </p>
                   <p>
-                    With an expected participation of <span className="font-semibold text-green-800">150+ teams</span> and{" "}
-                    <span className="font-semibold text-green-800">150+ unique ideas</span>, it is aimed at empowering 
-                    innovators, students, and future entrepreneurs to solve real-world agricultural challenges through 
-                    technology and innovation.
+                    {t('about.description2')}
                   </p>
                   <p className="bg-green-200/50 p-3 lg:p-4 rounded-lg border-l-4 border-green-600">
-                    The <strong>top 7 solutions</strong> will be incubated in our incubation cell, giving them the 
-                    necessary mentorship and resources to create a tangible impact.
+                    {t('about.incubationInfo')}
                   </p>
                 </div>
               </div>
@@ -73,15 +70,15 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
                 <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg">
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">150+</div>
-                  <div className="text-xs sm:text-sm font-medium text-green-600">Teams Expected</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">{t('about.stats.teams')}</div>
                 </div>
                 <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg">
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">7</div>
-                  <div className="text-xs sm:text-sm font-medium text-green-600">Incubation Spots</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">{t('about.stats.incubation')}</div>
                 </div>
                 <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg col-span-2 md:col-span-1">
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">24</div>
-                  <div className="text-xs sm:text-sm font-medium text-green-600">Hours to Innovate</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">{t('about.stats.hours')}</div>
                 </div>
               </div>
             </div>
@@ -101,36 +98,36 @@ export default function Home() {
             </div>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10">Themes</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10">{t('themes.title')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-10">{[
               {
-                title: "Smart Farming",
-                description: "IoT solutions for precision agriculture and automated farming systems."
+                titleKey: "themes.smartFarming.title",
+                descriptionKey: "themes.smartFarming.description"
               },
               {
-                title: "Sustainable Agriculture",
-                description: "Eco-friendly practices and technologies for sustainable farming."
+                titleKey: "themes.sustainableAgriculture.title",
+                descriptionKey: "themes.sustainableAgriculture.description"
               },
               {
-                title: "Supply Chain",
-                description: "Blockchain and AI solutions for transparent and efficient supply chains."
+                titleKey: "themes.supplyChain.title",
+                descriptionKey: "themes.supplyChain.description"
               },
               {
-                title: "Crop Monitoring",
-                description: "Drone and satellite technologies for real-time crop health monitoring."
+                titleKey: "themes.cropMonitoring.title",
+                descriptionKey: "themes.cropMonitoring.description"
               },
               {
-                title: "Market Access",
-                description: "Digital platforms connecting farmers directly with consumers and markets."
+                titleKey: "themes.marketAccess.title",
+                descriptionKey: "themes.marketAccess.description"
               },
               {
-                title: "Climate Resilience",
-                description: "Solutions to help farmers adapt to climate change challenges."
+                titleKey: "themes.climateResilience.title",
+                descriptionKey: "themes.climateResilience.description"
               }
             ].map((theme, index) => (
               <div key={index} className="p-4 sm:p-6 rounded-lg bg-green-800/30 backdrop-blur-sm border border-green-400/30 hover:bg-green-700/40 hover:border-green-300/50 transition-all duration-300 shadow-lg">
-                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-green-200">{theme.title}</h3>
-                <p className="text-sm sm:text-base text-green-100/80 font-light leading-relaxed">{theme.description}</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-green-200">{t(theme.titleKey)}</h3>
+                <p className="text-sm sm:text-base text-green-100/80 font-light leading-relaxed">{t(theme.descriptionKey)}</p>
               </div>
             ))}
           </div>

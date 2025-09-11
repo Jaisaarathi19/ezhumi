@@ -1,17 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from './LanguageProvider';
 
 export const TopHeader: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('En');
+  const { t } = useTranslation('common');
+  const { currentLanguage, changeLanguage, languages } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  const languages = [
-    { code: 'En', label: 'English' },
-    { code: 'Ta', label: 'Tamil' },
-    { code: 'Hi', label: 'Hindi' }
-  ];
 
   // Handle scroll effect
   useEffect(() => {
@@ -50,14 +47,14 @@ export const TopHeader: React.FC = () => {
               {languages.map((lang, index) => (
                 <div key={lang.code} className="flex items-center">
                   <button
-                    onClick={() => setSelectedLanguage(lang.code)}
+                    onClick={() => changeLanguage(lang.code)}
                     className={`transition-colors duration-300 px-2 lg:px-3 py-1.5 rounded text-xs lg:text-sm ${
-                      selectedLanguage === lang.code
+                      currentLanguage === lang.code
                         ? 'text-white border border-green-500 bg-green-600 shadow-md'
                         : 'hover:text-white hover:border-green-400 hover:bg-green-600'
                     }`}
                   >
-                    {lang.code}
+                    {lang.code.toUpperCase()}
                   </button>
                   {index < languages.length - 1 && (
                     <span className="text-white/50 mx-1 lg:mx-2">|</span>
@@ -87,42 +84,42 @@ export const TopHeader: React.FC = () => {
             <nav className="text-center w-full max-w-lg">
               <div className="space-y-6 sm:space-y-8">
                 <a href="#home" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  Home
+                  {t('nav.home')}
                 </a>
                 <a href="#about" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  About
+                  {t('nav.about')}
                 </a>
                 <a href="#themes" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  Themes
+                  {t('nav.themes')}
                 </a>
                 <a href="#timeline" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  Timeline
+                  {t('nav.timeline')}
                 </a>
                 <a href="#faqs" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  FAQ&apos;s
+                  {t('nav.faqs')}
                 </a>
                 <a href="#contact" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                  Contact
+                  {t('nav.contact')}
                 </a>
                 
                 {/* Language Switcher - Mobile only */}
                 <div className="pt-6 sm:pt-8 border-t border-white/20 md:hidden">
-                  <div className="text-sm text-white/70 mb-3 sm:mb-4 font-grotesk">Language</div>
+                  <div className="text-sm text-white/70 mb-3 sm:mb-4 font-grotesk">{t('nav.language')}</div>
                   <div className="flex items-center justify-center space-x-3 sm:space-x-4">
                     {languages.map((lang, index) => (
                       <div key={lang.code} className="flex items-center">
                         <button
                           onClick={() => {
-                            setSelectedLanguage(lang.code);
+                            changeLanguage(lang.code);
                             toggleMenu();
                           }}
                           className={`transition-colors duration-300 px-3 sm:px-4 py-2 rounded-lg text-base sm:text-lg font-medium ${
-                            selectedLanguage === lang.code
+                            currentLanguage === lang.code
                               ? 'text-white border-2 border-green-500 bg-green-600 shadow-md'
                               : 'text-white/70 border-2 border-white/30 hover:text-white hover:border-green-400 hover:bg-green-600/20'
                           }`}
                         >
-                          {lang.code}
+                          {lang.nativeLabel}
                         </button>
                         {index < languages.length - 1 && (
                           <span className="text-white/50 mx-1 sm:mx-2">|</span>

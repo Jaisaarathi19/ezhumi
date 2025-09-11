@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface TimelineEvent {
@@ -15,9 +16,10 @@ interface TimelineEvent {
 interface TimelineItemProps {
   event: TimelineEvent;
   index: number;
+  t: (key: string) => string;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ event, index }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({ event, index, t }) => {
   const { elementRef, isVisible } = useScrollAnimation(0.2);
 
   return (
@@ -68,7 +70,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index }) => {
             <p className="text-sm text-green-600 leading-relaxed">{event.description}</p>
             {event.status === 'featured' && (
               <div className="mt-3 p-3 bg-gradient-to-r from-green-100 to-green-50 rounded-lg border-l-4 border-green-500">
-                <p className="text-xs font-semibold text-green-700">🌟 Main Event</p>
+                <p className="text-xs font-semibold text-green-700">🌟 {t('timeline.mainEvent')}</p>
               </div>
             )}
           </div>
@@ -103,7 +105,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index }) => {
             {event.status === 'featured' && (
               <div className="mt-4 p-4 bg-gradient-to-r from-green-100 to-green-50 rounded-xl border-l-4 border-green-500">
                 <p className="text-sm font-semibold text-green-700 flex items-center gap-2">
-                  <span>🌟</span> Main Event - Don&apos;t miss this!
+                  <span>🌟</span> {t('timeline.mainEvent')}
                 </p>
               </div>
             )}
@@ -115,55 +117,56 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index }) => {
 };
 
 export const Timeline: React.FC = () => {
+  const { t } = useTranslation('common');
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation(0.3);
   const { elementRef: lineRef, isVisible: lineVisible } = useScrollAnimation(0.1);
 
   const events: TimelineEvent[] = [
     {
       date: "December 15, 2024",
-      title: "Registration Opens",
-      description: "Team registration and idea submission begins. Form your teams and get ready to innovate!",
-      time: "9:00 AM",
+      title: t('timeline.events.registrationOpens.title'),
+      description: t('timeline.events.registrationOpens.description'),
+      time: t('timeline.events.registrationOpens.time'),
       icon: "🚀",
       status: "upcoming"
     },
     {
       date: "January 10, 2025",
-      title: "Registration Deadline",
-      description: "Last date for team registration and initial idea submission. Don&apos;t miss out!",
-      time: "11:59 PM",
+      title: t('timeline.events.registrationDeadline.title'),
+      description: t('timeline.events.registrationDeadline.description'),
+      time: t('timeline.events.registrationDeadline.time'),
       icon: "⏰",
       status: "upcoming"
     },
     {
       date: "January 15, 2025",
-      title: "Team Selection",
-      description: "Selected teams will be announced. Confirmation emails sent to all participants.",
-      time: "6:00 PM",
+      title: t('timeline.events.teamSelection.title'),
+      description: t('timeline.events.teamSelection.description'),
+      time: t('timeline.events.teamSelection.time'),
       icon: "✅",
       status: "upcoming"
     },
     {
       date: "February 1-2, 2025",
-      title: "Hackathon Weekend",
-      description: "48-hour intensive hackathon begins. Build, innovate, and create groundbreaking solutions!",
-      time: "Day 1: 9:00 AM",
+      title: t('timeline.events.hackathonWeekend.title'),
+      description: t('timeline.events.hackathonWeekend.description'),
+      time: t('timeline.events.hackathonWeekend.time'),
       icon: "💻",
       status: "featured"
     },
     {
       date: "February 2, 2025",
-      title: "Final Presentations",
-      description: "Teams present their solutions to expert judges. Winners announced and prizes awarded.",
-      time: "4:00 PM",
+      title: t('timeline.events.finalPresentations.title'),
+      description: t('timeline.events.finalPresentations.description'),
+      time: t('timeline.events.finalPresentations.time'),
       icon: "🏆",
       status: "featured"
     },
     {
       date: "February 15, 2025",
-      title: "Incubation Program",
-      description: "Top 7 solutions enter our incubation program with mentorship and resources.",
-      time: "Ongoing",
+      title: t('timeline.events.incubationProgram.title'),
+      description: t('timeline.events.incubationProgram.description'),
+      time: t('timeline.events.incubationProgram.time'),
       icon: "🌱",
       status: "future"
     }
@@ -185,7 +188,7 @@ export const Timeline: React.FC = () => {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-800 mb-4">
-            Event Timeline
+            {t('timeline.title')}
           </h2>
           <div className={`w-24 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto rounded-full transition-all duration-1000 delay-300 ${
             titleVisible ? 'scale-x-100' : 'scale-x-0'
@@ -193,7 +196,7 @@ export const Timeline: React.FC = () => {
           <p className={`text-lg sm:text-xl text-green-600 mt-4 max-w-2xl mx-auto transition-all duration-1000 delay-500 ${
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            Your journey from registration to innovation starts here
+            {t('timeline.subtitle')}
           </p>
         </div>
         
@@ -209,7 +212,7 @@ export const Timeline: React.FC = () => {
           
           <div className="space-y-8 sm:space-y-16">
             {events.map((event, index) => (
-              <TimelineItem key={index} event={event} index={index} />
+              <TimelineItem key={index} event={event} index={index} t={t} />
             ))}
           </div>
           
@@ -217,7 +220,7 @@ export const Timeline: React.FC = () => {
           <div className="mt-12 sm:mt-16 text-center relative z-10">
             <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md rounded-full px-6 py-3 border border-green-200 shadow-lg">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-green-700">Your innovation journey continues...</span>
+              <span className="text-sm font-semibold text-green-700">{t('timeline.continueJourney')}</span>
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse delay-300"></div>
             </div>
           </div>
