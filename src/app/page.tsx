@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Hero } from '@/components/Hero';
 import { TopHeader } from '@/components/TopHeader';
+import { Timeline } from '@/components/Timeline';
 
 export default function Home() {
   return (
@@ -15,22 +16,23 @@ export default function Home() {
       <Hero />
       
       {/* About Section */}
-      <section id="about" className="min-h-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200 text-green-900 flex items-center justify-center px-8 py-16">
+      <section id="about" className="min-h-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200 text-green-900 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl w-full relative">
           {/* Background decorative elements */}
           <div className="absolute -top-16 -left-16 w-32 h-32 bg-green-300/20 rounded-full blur-xl"></div>
           <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-green-400/20 rounded-full blur-xl"></div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left side - Image */}
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-green-300/30">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-green-300/30 max-w-md mx-auto lg:max-w-none">
                 <Image 
                   src="/media/poster.jpg" 
                   alt="Ezhumi Hackathon Poster" 
-                  width={600}
-                  height={400}
+                  width={400}
+                  height={300}
                   className="w-full h-auto object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/20 to-transparent"></div>
               </div>
@@ -40,12 +42,12 @@ export default function Home() {
             </div>
 
             {/* Right side - Content */}
-            <div className="space-y-8">
+            <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
               <div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-green-800 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 text-green-800 leading-tight text-center lg:text-left">
                   About Ezhumi
                 </h2>
-                <div className="space-y-6 text-lg md:text-xl leading-relaxed text-green-700">
+                <div className="space-y-4 lg:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-green-700">
                   <p className="font-medium">
                     <span className="text-green-800 font-bold">Ezhumi isn&apos;t just a word. It&apos;s a wake-up call.</span> 
                     {" "}A call for students to rise, build, and make a difference.
@@ -60,7 +62,7 @@ export default function Home() {
                     innovators, students, and future entrepreneurs to solve real-world agricultural challenges through 
                     technology and innovation.
                   </p>
-                  <p className="bg-green-200/50 p-4 rounded-lg border-l-4 border-green-600">
+                  <p className="bg-green-200/50 p-3 lg:p-4 rounded-lg border-l-4 border-green-600">
                     The <strong>top 7 solutions</strong> will be incubated in our incubation cell, giving them the 
                     necessary mentorship and resources to create a tangible impact.
                   </p>
@@ -68,18 +70,18 @@ export default function Home() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-green-300/50 shadow-lg">
-                  <div className="text-2xl md:text-3xl font-bold mb-1 text-green-800">150+</div>
-                  <div className="text-xs md:text-sm font-medium text-green-600">Teams Expected</div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
+                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">150+</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">Teams Expected</div>
                 </div>
-                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-green-300/50 shadow-lg">
-                  <div className="text-2xl md:text-3xl font-bold mb-1 text-green-800">7</div>
-                  <div className="text-xs md:text-sm font-medium text-green-600">Incubation Spots</div>
+                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">7</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">Incubation Spots</div>
                 </div>
-                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-green-300/50 shadow-lg col-span-2 md:col-span-1">
-                  <div className="text-2xl md:text-3xl font-bold mb-1 text-green-800">24</div>
-                  <div className="text-xs md:text-sm font-medium text-green-600">Hours to Innovate</div>
+                <div className="text-center bg-white/60 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-green-300/50 shadow-lg col-span-2 md:col-span-1">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 text-green-800">24</div>
+                  <div className="text-xs sm:text-sm font-medium text-green-600">Hours to Innovate</div>
                 </div>
               </div>
             </div>
@@ -136,96 +138,7 @@ export default function Home() {
       </section>
 
       {/* Timeline Section */}
-      <section id="timeline" className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 text-green-900 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="max-w-6xl w-full relative">
-          {/* Background decorative elements */}
-          <div className="absolute -top-16 -left-16 w-32 h-32 bg-green-300/20 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-green-400/20 rounded-full blur-xl"></div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10 text-green-800">Event Timeline</h2>
-          
-          <div className="relative z-10">
-            {/* Timeline Line - Better mobile positioning */}
-            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 bg-green-400 transform sm:-translate-x-1/2"></div>
-            
-            <div className="space-y-8 sm:space-y-12">
-              {[
-                {
-                  date: "December 15, 2024",
-                  title: "Registration Opens",
-                  description: "Team registration and idea submission begins. Form your teams and get ready!",
-                  time: "9:00 AM"
-                },
-                {
-                  date: "January 10, 2025",
-                  title: "Registration Deadline",
-                  description: "Last date for team registration and initial idea submission.",
-                  time: "11:59 PM"
-                },
-                {
-                  date: "January 15, 2025",
-                  title: "Team Selection",
-                  description: "Selected teams will be announced. Confirmation emails sent to participants.",
-                  time: "6:00 PM"
-                },
-                {
-                  date: "February 1-2, 2025",
-                  title: "Hackathon Weekend",
-                  description: "48-hour intensive hackathon begins. Build, innovate, and create solutions!",
-                  time: "Day 1: 9:00 AM"
-                },
-                {
-                  date: "February 2, 2025",
-                  title: "Final Presentations",
-                  description: "Teams present their solutions to judges. Winners announced and prizes awarded.",
-                  time: "4:00 PM"
-                },
-                {
-                  date: "February 15, 2025",
-                  title: "Incubation Program",
-                  description: "Top 7 solutions enter our incubation program with mentorship and resources.",
-                  time: "Ongoing"
-                }
-              ].map((event, index) => (
-                <div key={index} className="relative">
-                  {/* Timeline dot - Properly aligned with line */}
-                  <div className="absolute left-5 sm:left-1/2 top-6 w-3 h-3 sm:w-4 sm:h-4 bg-green-600 rounded-full border-2 sm:border-4 border-white shadow-lg transform sm:-translate-x-1/2 z-10"></div>
-                  
-                  {/* Mobile Layout: Clean single column */}
-                  <div className="sm:hidden">
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-green-200 shadow-md hover:shadow-lg transition-all duration-300 relative ml-10 hover:scale-[1.01] hover:bg-white/90">
-                      <div className="space-y-3">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="text-lg font-bold text-green-800 leading-tight flex-1">{event.title}</h3>
-                          <span className="text-xs text-green-600 font-semibold bg-green-100 px-3 py-1.5 rounded-full whitespace-nowrap flex-shrink-0">
-                            {event.time}
-                          </span>
-                        </div>
-                        <p className="text-sm text-green-700 font-semibold">{event.date}</p>
-                        <p className="text-sm text-green-600 leading-relaxed">{event.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Desktop Layout: Alternating sides */}
-                  <div className={`hidden sm:block sm:w-1/2 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
-                    <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-green-200 shadow-md hover:shadow-lg transition-all duration-300">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                        <h3 className="text-xl font-semibold text-green-800 mb-2 sm:mb-0">{event.title}</h3>
-                        <span className="text-sm text-green-600 font-medium bg-green-100 px-3 py-1.5 rounded-full self-start sm:self-center">
-                          {event.time}
-                        </span>
-                      </div>
-                      <p className="text-base text-green-700 font-medium mb-3">{event.date}</p>
-                      <p className="text-base text-green-600 leading-relaxed">{event.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Timeline />
 
       {/* FAQ Section */}
       <section id="faqs" className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-50 text-green-900 flex items-center justify-center px-8 py-16">
