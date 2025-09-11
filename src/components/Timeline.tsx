@@ -103,7 +103,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index }) => {
             {event.status === 'featured' && (
               <div className="mt-4 p-4 bg-gradient-to-r from-green-100 to-green-50 rounded-xl border-l-4 border-green-500">
                 <p className="text-sm font-semibold text-green-700 flex items-center gap-2">
-                  <span>🌟</span> Main Event - Don't miss this!
+                  <span>🌟</span> Main Event - Don&apos;t miss this!
                 </p>
               </div>
             )}
@@ -130,7 +130,7 @@ export const Timeline: React.FC = () => {
     {
       date: "January 10, 2025",
       title: "Registration Deadline",
-      description: "Last date for team registration and initial idea submission. Don't miss out!",
+      description: "Last date for team registration and initial idea submission. Don&apos;t miss out!",
       time: "11:59 PM",
       icon: "⏰",
       status: "upcoming"
