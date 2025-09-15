@@ -43,13 +43,7 @@ export default function RegistrationSuccess() {
     }
   }, [router]);
 
-  const getOrdinalSuffix = (num: string): string => {
-    const n = parseInt(num);
-    if (n === 1) return 'st';
-    if (n === 2) return 'nd';
-    if (n === 3) return 'rd';
-    return 'th';
-  };
+
 
   if (!registrationData) {
     return (
@@ -195,12 +189,6 @@ export default function RegistrationSuccess() {
                       <h4 className="text-white font-medium">{participant.name}</h4>
                       <p className="text-green-300 text-sm">{participant.email}</p>
                       <p className="text-blue-300 text-sm">{participant.contact}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white text-sm">
-                        {participant.year}{getOrdinalSuffix(participant.year)} Year
-                      </p>
-                      <p className="text-green-300 text-sm">{participant.department}</p>
                     </div>
                   </div>
                 </div>
