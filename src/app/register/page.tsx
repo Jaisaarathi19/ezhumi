@@ -27,10 +27,6 @@ export default function Register() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showOtpField, setShowOtpField] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [generatedOtp, setGeneratedOtp] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
 
   // Authentication check
   useEffect(() => {
@@ -97,45 +93,6 @@ export default function Register() {
     }));
   };
 
-  const generateOtp = () => {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  };
-
-  const sendOtp = async (email: string, phone: string) => {
-    try {
-      const otpCode = generateOtp();
-      setGeneratedOtp(otpCode);
-      
-      // Here you would normally send OTP via SMS/Email
-      // For demo purposes, we'll just show it in console and alert
-      console.log(`OTP sent to ${email} and ${phone}: ${otpCode}`);
-      alert(`OTP sent! For demo: ${otpCode}`); // Remove this in production
-      
-      // In production, you would call an API to send OTP
-      // await supabase.functions.invoke('send-otp', {
-      //   body: { email, phone, otp: otpCode }
-      // });
-      
-      setOtpSent(true);
-      setShowOtpField(true);
-      setError(null);
-      return true;
-    } catch (error) {
-      console.error('Error sending OTP:', error);
-      setError('Failed to send OTP. Please try again.');
-      return false;
-    }
-  };
-
-  const verifyOtp = () => {
-    if (otp === generatedOtp) {
-      return true;
-    } else {
-      setError('Invalid OTP. Please check and try again.');
-      return false;
-    }
-  };
-
   const validateForm = () => {
     // Basic validation
     if (!formData.teamName || !formData.teamLeadName || !formData.teamLeadPhone || 
@@ -187,21 +144,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      // If OTP hasn't been sent yet, send it first
-      if (!otpSent) {
-        const otpSentSuccessfully = await sendOtp(formData.teamLeadEmail, formData.teamLeadPhone);
-        setLoading(false);
-        if (!otpSentSuccessfully) return;
-        return; // Stop here, wait for OTP input
-      }
-
-      // If OTP is sent but not verified, verify it
-      if (otpSent && !verifyOtp()) {
-        setLoading(false);
-        return;
-      }
-
-      // Proceed with registration after OTP verification
+      // Proceed with registration directly (no OTP verification needed since user is authenticated)
       // Check environment variables
       console.log('Environment check:');
       console.log('SUPABASE_URL exists:', !!process.env.NEXT_PUBLIC_SUPABASE_URL);
@@ -571,55 +514,6 @@ export default function Register() {
               </div>
             )}
 
-            {/* OTP Verification Section */}
-            {showOtpField && (
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-white border-b border-green-600 pb-2">
-                  {t('register.otp.title')}
-                </h3>
-                
-                <div className="bg-green-900/20 backdrop-blur-sm rounded-lg p-4">
-                  <p className="text-green-300 text-sm mb-4">
-                    {t('register.otp.sentMessage', { 
-                      email: formData.teamLeadEmail,
-                      phone: formData.teamLeadPhone 
-                    })}
-                  </p>
-                  
-                  <div>
-                    <label htmlFor="otp" className="block text-sm font-medium text-green-300 mb-1">
-                      {t('register.otp.enterCode')} *
-                    </label>
-                    <div className="flex space-x-2">
-                      <input
-                        id="otp"
-                        name="otp"
-                        type="text"
-                        required
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        maxLength={6}
-                        className="appearance-none relative block w-32 px-3 py-3 border border-gray-700 placeholder-gray-400 text-white bg-gray-800/50 backdrop-blur-sm rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm text-center tracking-widest"
-                        placeholder="000000"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setOtpSent(false);
-                          setShowOtpField(false);
-                          setOtp('');
-                          setGeneratedOtp('');
-                        }}
-                        className="px-4 py-2 text-sm bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors duration-200"
-                      >
-                        {t('register.otp.resendButton')}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
             <div>
               <button
                 type="submit"
@@ -628,9 +522,7 @@ export default function Register() {
               >
                 {loading 
                   ? t('register.registering') 
-                  : !otpSent 
-                  ? t('register.sendOtpButton')
-                  : t('register.verifyAndRegisterButton')
+                  : t('register.registerTeam', 'Register Team')
                 }
               </button>
             </div>
