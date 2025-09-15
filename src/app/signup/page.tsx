@@ -31,11 +31,12 @@ export default function SignUp() {
 
   const sendSupabaseOtp = async (email: string) => {
     try {
-      // Use signInWithOtp for actual OTP codes
-      const { data, error } = await supabase.auth.signInWithOtp({
+      // Use signUp for password-based signup with email confirmation
+      const { data, error } = await supabase.auth.signUp({
         email: email,
+        password: formData.password,
         options: {
-          shouldCreateUser: true,
+          emailRedirectTo: `${window.location.origin}/`,
           data: {
             full_name: formData.name,
           }
@@ -43,19 +44,19 @@ export default function SignUp() {
       });
       
       if (error) {
-        console.error('Error sending OTP:', error);
+        console.error('Error during signup:', error);
         setError(error.message);
         return false;
       }
       
-      console.log('OTP sent successfully:', data);
+      console.log('Signup successful, awaiting email confirmation:', data);
       setOtpSent(true);
       setShowOtpField(true);
       setError(null);
       return true;
     } catch (error) {
-      console.error('Error sending OTP:', error);
-      setError(t('signup.errors.otpSendFailed'));
+      console.error('Error during signup:', error);
+      setError(t('signup.errors.signupFailed'));
       return false;
     }
   };
@@ -65,19 +66,19 @@ export default function SignUp() {
       const { data, error } = await supabase.auth.verifyOtp({
         email: email,
         token: token,
-        type: 'email'
+        type: 'signup'
       });
       
       if (error) {
-        console.error('Error verifying OTP:', error);
+        console.error('Error verifying signup confirmation:', error);
         setError(error.message);
         return false;
       }
       
-      console.log('OTP verified successfully:', data);
+      console.log('Email confirmation verified successfully:', data);
       return true;
     } catch (error) {
-      console.error('Error verifying OTP:', error);
+      console.error('Error verifying email confirmation:', error);
       setError(t('signup.errors.invalidOtp'));
       return false;
     }
@@ -89,13 +90,18 @@ export default function SignUp() {
       return false;
     }
     
-    // For OTP signup, passwords are optional
-    if (formData.password && formData.password !== formData.confirmPassword) {
+    // Password is now mandatory
+    if (!formData.password) {
+      setError(t('signup.errors.passwordRequired'));
+      return false;
+    }
+    
+    if (formData.password !== formData.confirmPassword) {
       setError(t('signup.errors.passwordsDoNotMatch'));
       return false;
     }
     
-    if (formData.password && formData.password.length < 6) {
+    if (formData.password.length < 6) {
       setError(t('signup.errors.passwordTooShort'));
       return false;
     }
@@ -112,15 +118,15 @@ export default function SignUp() {
     setLoading(true);
     
     try {
-      // If OTP hasn't been sent yet, send it first
+      // If email confirmation hasn't been sent yet, create account and send confirmation email
       if (!otpSent) {
-        const otpSentSuccessfully = await sendSupabaseOtp(formData.email);
+        const signupSuccessful = await sendSupabaseOtp(formData.email);
         setLoading(false);
-        if (!otpSentSuccessfully) return;
-        return; // Stop here, wait for OTP input
+        if (!signupSuccessful) return;
+        return; // Stop here, wait for email confirmation input
       }
 
-      // If OTP is sent, verify it
+      // If email confirmation is sent, verify it
       if (otpSent && otp) {
         const otpVerified = await verifySupabaseOtp(formData.email, otp);
         if (!otpVerified) {
@@ -128,11 +134,11 @@ export default function SignUp() {
           return;
         }
         
-        // If OTP verification is successful, the user is automatically signed up
+        // If email confirmation is successful, the user is signed up and logged in
         setSuccess(true);
         setTimeout(() => router.push('/'), 2000);
       } else {
-        setError(t('signup.errors.otpRequired'));
+        setError('Please enter the confirmation code from your email');
         setLoading(false);
         return;
       }
@@ -284,10 +290,11 @@ export default function SignUp() {
                   name="password"
                   type="password"
                   autoComplete="new-password"
+                  required
                   value={formData.password}
                   onChange={handleChange}
                   className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white bg-gray-800/50 backdrop-blur-sm focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
-                  placeholder={`${t('signup.password')} (${t('signup.optional')})`}
+                  placeholder={t('signup.password')}
                 />
               </div>
               <div>
@@ -299,25 +306,26 @@ export default function SignUp() {
                   name="confirmPassword"
                   type="password"
                   autoComplete="new-password"
+                  required
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className={`appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white bg-gray-800/50 backdrop-blur-sm focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm ${
                     !showOtpField ? 'rounded-b-md' : ''
                   }`}
-                  placeholder={`${t('signup.confirmPassword')} (${t('signup.optional')})`}
+                  placeholder={t('signup.confirmPassword')}
                 />
               </div>
             </div>
 
-            {/* OTP Verification Section */}
+            {/* Email Confirmation Section */}
             {showOtpField && (
               <div className="space-y-4">
                 <div className="bg-green-900/20 backdrop-blur-sm rounded-lg p-4 border border-green-500/30">
                   <h4 className="text-sm font-medium text-green-300 mb-2">
-                    {t('signup.otp.title')}
+                    Email Confirmation
                   </h4>
                   <p className="text-green-200/80 text-sm mb-4">
-                    {t('signup.otp.sentMessage', { email: formData.email })}
+                    Please check your email for a confirmation code and enter it below.
                   </p>
                   
                   <div className="flex space-x-2">
@@ -341,7 +349,7 @@ export default function SignUp() {
                       }}
                       className="px-4 py-2 text-sm bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors duration-200"
                     >
-                      {t('signup.otp.resendButton')}
+                      Resend Email
                     </button>
                   </div>
                 </div>
@@ -363,8 +371,8 @@ export default function SignUp() {
                 {loading 
                   ? t('signup.signingUp') 
                   : !otpSent 
-                  ? t('signup.sendOtpButton')
-                  : t('signup.verifyAndSignUpButton')
+                  ? 'Create Account'
+                  : 'Confirm Email & Sign Up'
                 }
               </button>
             </div>
