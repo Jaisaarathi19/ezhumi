@@ -139,9 +139,13 @@ export const TopHeader: React.FC = () => {
                 <a href="#contact" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
                   {t('nav.contact')}
                 </a>
-                <a href="/register" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk bg-green-600/30 backdrop-blur-sm border border-green-500/50 rounded-lg py-3 px-6 hover:bg-green-500/40 hover:border-green-400/70 shadow-lg" onClick={toggleMenu}>
-                  {t('nav.register')}
-                </a>
+                
+                {/* Register link - only show if user is authenticated */}
+                {user && (
+                  <a href="/register" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk bg-green-600/30 backdrop-blur-sm border border-green-500/50 rounded-lg py-3 px-6 hover:bg-green-500/40 hover:border-green-400/70 shadow-lg" onClick={toggleMenu}>
+                    {t('nav.register')}
+                  </a>
+                )}
                 
                 {/* Authentication Section */}
                 {user ? (

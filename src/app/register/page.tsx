@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface Participant {
   name: string;
@@ -14,6 +15,7 @@ interface Participant {
 export default function Register() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [formData, setFormData] = useState({
     teamName: '',
     teamLeadName: '',
@@ -29,6 +31,30 @@ export default function Register() {
   const [otp, setOtp] = useState('');
   const [generatedOtp, setGeneratedOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
+
+  // Authentication check
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/signup');
+    }
+  }, [user, authLoading, router]);
+
+  // Show loading screen while checking authentication
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-black flex items-center justify-center">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-green-500 border-t-transparent"></div>
+          <p className="text-white text-lg">Checking authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render the form if user is not authenticated
+  if (!user) {
+    return null; // Will redirect to signup page via useEffect
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -326,6 +352,14 @@ export default function Register() {
           <p className="mt-2 text-center text-sm text-green-300">
             {t('register.subtitle')}
           </p>
+          <div className="mt-4 text-center">
+            <div className="inline-flex items-center px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full">
+              <svg className="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-green-300 text-sm">Authenticated user: {user?.email}</span>
+            </div>
+          </div>
         </div>
 
         {error && (
@@ -601,13 +635,24 @@ export default function Register() {
               </button>
             </div>
 
-            <div className="text-center">
+            <div className="text-center space-y-2">
               <button
                 type="button"
                 onClick={() => router.push('/')}
-                className="text-sm text-green-300 hover:text-green-200 underline"
+                className="text-sm text-green-300 hover:text-green-200 underline mr-4"
               >
                 {t('register.backToHome')}
+              </button>
+              <span className="text-gray-500">|</span>
+              <button
+                type="button"
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.push('/');
+                }}
+                className="text-sm text-red-300 hover:text-red-200 underline ml-4"
+              >
+                Logout
               </button>
             </div>
           </form>

@@ -3,16 +3,22 @@
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useGsapAnimations } from '@/hooks/useGsapAnimations';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const Hero: React.FC = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const { user } = useAuth();
   
   // Initialize GSAP animations
   useGsapAnimations();
 
   const handleRegisterClick = () => {
-    router.push('/register');
+    if (user) {
+      router.push('/register');
+    } else {
+      router.push('/signup');
+    }
   };
 
   const handleExploreThemeClick = () => {
@@ -58,12 +64,12 @@ export const Hero: React.FC = () => {
 
         {/* CTA Buttons - Left Aligned */}
         <div className="flex flex-col sm:flex-row gap-4 hero-cta max-w-md opacity-0">
-          {/* Register Now - Green Background */}
+          {/* Register Now / Sign Up Button */}
           <button
             onClick={handleRegisterClick}
             className="px-8 py-4 bg-green-600 text-white font-medium border-2 border-green-600 hover:bg-green-700 hover:border-green-700 transition-all duration-300 uppercase tracking-wide text-sm font-grotesk rounded-lg"
           >
-            {t('hero.registerButton')}
+            {user ? t('hero.registerButton') : 'Sign Up to Register'}
           </button>
           
           {/* Explore Theme - White Background */}
