@@ -3,12 +3,21 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from './LanguageProvider';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const TopHeader: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
   const { currentLanguage, changeLanguage, languages } = useLanguage();
+  const { user, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Debug logging
+  console.log('TopHeader render - currentLanguage:', currentLanguage, 'i18n.language:', i18n.language);
+  console.log('TopHeader - hero.title translation:', t('hero.title'));
+
+  // Get user's name from metadata
+  const userName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
 
   // Handle scroll effect
   useEffect(() => {
@@ -38,7 +47,7 @@ export const TopHeader: React.FC = () => {
             {/* Logo */}
             <div className="logo">
               <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wider font-grotesk">
-                EZHUMI
+                {t('hero.title', 'EZHUMI')}
               </h1>
             </div>
 
@@ -64,8 +73,36 @@ export const TopHeader: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side - Hamburger Menu */}
-          <button
+          {/* Right side - Authentication Links and Hamburger Menu */}
+          <div className="flex items-center space-x-4 lg:space-x-6">
+            {/* Authentication Section (Desktop only) */}
+            <div className="hidden md:flex items-center space-x-3">
+              {user ? (
+                <div className="flex items-center space-x-3">
+                  <span className="text-white text-base lg:text-lg font-medium">
+                    {t('nav.welcome')}, {userName}!
+                  </span>
+                  <button 
+                    onClick={signOut}
+                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium"
+                  >
+                    {t('nav.signOut')}
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <a href="/login" className="text-white hover:text-green-300 transition-colors text-sm font-medium">
+                    {t('nav.login')}
+                  </a>
+                  <a href="/signup" className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium">
+                    {t('nav.signup')}
+                  </a>
+                </>
+              )}
+            </div>
+
+            {/* Hamburger Menu */}
+            <button
             onClick={toggleMenu}
             className="hamburger-menu relative w-6 h-6 sm:w-8 sm:h-8 flex flex-col justify-center items-center group z-50"
             aria-label="Toggle menu"
@@ -74,6 +111,7 @@ export const TopHeader: React.FC = () => {
             <span className={`block h-0.5 w-5 sm:w-6 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
             <span className={`block h-0.5 w-5 sm:w-6 bg-white transition-all duration-300 absolute ${isMenuOpen ? '-rotate-45' : '-translate-y-1'}`}></span>
           </button>
+          </div>
         </div>
       </header>
 
@@ -101,6 +139,38 @@ export const TopHeader: React.FC = () => {
                 <a href="#contact" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
                   {t('nav.contact')}
                 </a>
+                <a href="/register" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk bg-green-600/30 backdrop-blur-sm border border-green-500/50 rounded-lg py-3 px-6 hover:bg-green-500/40 hover:border-green-400/70 shadow-lg" onClick={toggleMenu}>
+                  {t('nav.register')}
+                </a>
+                
+                {/* Authentication Section */}
+                {user ? (
+                  <div className="pt-6 sm:pt-8 border-t border-white/20">
+                    <div className="text-center space-y-4">
+                      <div className="text-2xl sm:text-4xl lg:text-5xl font-light text-green-300 font-grotesk">
+                        {t('nav.welcome')}, {userName}!
+                      </div>
+                      <button 
+                        onClick={() => {
+                          signOut();
+                          toggleMenu();
+                        }}
+                        className="block mx-auto px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium"
+                      >
+                        {t('nav.signOut')}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <a href="/login" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
+                      {t('nav.login')}
+                    </a>
+                    <a href="/signup" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
+                      {t('nav.signup')}
+                    </a>
+                  </>
+                )}
                 
                 {/* Language Switcher - Mobile only */}
                 <div className="pt-6 sm:pt-8 border-t border-white/20 md:hidden">

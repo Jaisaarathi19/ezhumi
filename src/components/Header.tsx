@@ -1,32 +1,68 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
+
 interface HeaderProps {
   onMenuToggle: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
+  const { t, i18n } = useTranslation('common');
+
+  const changeLanguage = (language: string) => {
+    console.log('Changing language to:', language);
+    i18n.changeLanguage(language);
+  };
+
+  const getCurrentLanguage = () => {
+    const currentLang = i18n.language || i18n.resolvedLanguage || 'en';
+    console.log('Current language:', currentLang);
+    return currentLang;
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-8 py-6">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="logo">
           <h1 className="text-2xl font-bold text-white tracking-wider">
-            EZHUMI
+            {t('hero.title') || 'EZHUMI'}
           </h1>
         </div>
 
         {/* Language Switcher - Center */}
         <div className="language-switcher flex items-center space-x-2 text-sm font-light text-white/80">
-          <button className="hover:text-white transition-colors duration-300 px-3 py-1.5 rounded border border-white/20 bg-white/10">
-            En
+          <button 
+            onClick={() => changeLanguage('en')}
+            className={`hover:text-white transition-colors duration-300 px-3 py-1.5 rounded border ${
+              getCurrentLanguage() === 'en' 
+                ? 'border-white/40 bg-white/20 text-white' 
+                : 'border-white/20 bg-white/10 hover:border-white/20 hover:bg-white/10'
+            }`}
+          >
+            {t('nav.languages.en')}
           </button>
           <span className="text-white/50">|</span>
-          <button className="hover:text-white transition-colors duration-300 px-3 py-1.5 rounded hover:border-white/20 hover:bg-white/10">
-            Ta
+          <button 
+            onClick={() => changeLanguage('ta')}
+            className={`hover:text-white transition-colors duration-300 px-3 py-1.5 rounded border ${
+              getCurrentLanguage() === 'ta' 
+                ? 'border-white/40 bg-white/20 text-white' 
+                : 'border-white/20 bg-white/10 hover:border-white/20 hover:bg-white/10'
+            }`}
+          >
+            {t('nav.languages.ta')}
           </button>
           <span className="text-white/50">|</span>
-          <button className="hover:text-white transition-colors duration-300 px-3 py-1.5 rounded hover:border-white/20 hover:bg-white/10">
-            Hi
+          <button 
+            onClick={() => changeLanguage('hi')}
+            className={`hover:text-white transition-colors duration-300 px-3 py-1.5 rounded border ${
+              getCurrentLanguage() === 'hi' 
+                ? 'border-white/40 bg-white/20 text-white' 
+                : 'border-white/20 bg-white/10 hover:border-white/20 hover:bg-white/10'
+            }`}
+          >
+            {t('nav.languages.hi')}
           </button>
         </div>
 

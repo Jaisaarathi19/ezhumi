@@ -6,13 +6,27 @@
     "timeline": "Timeline",
     "faqs": "FAQ's",
     "contact": "Contact",
-    "language": "Language"
+    "register": "Register",
+    "login": "Login",
+    "signup": "Sign Up",
+    "language": "Language",
+    "welcome": "Welcome",
+    "signOut": "Sign Out",
+    "languages": {
+      "en": "En",
+      "ta": "தமிழ்",
+      "hi": "हिं"
+    }
   },
   "hero": {
     "title": "EZHUMI",
     "subtitle": "Rise. Build. Transform.",
+    "headline1": "HACK.",
+    "headline2": "SEEK.",
+    "headline3": "CULTIVATE.",
     "description": "Join the agricultural revolution. 48 hours to innovate solutions that will transform farming and empower communities.",
     "registerButton": "Register Now",
+    "exploreButton": "Explore Theme",
     "learnMoreButton": "Learn More"
   },
   "about": {
@@ -117,6 +131,178 @@
         "question": "Do I need to bring my own hardware or software?",
         "answer": "We provide basic infrastructure, WiFi, and development environments. However, participants are encouraged to bring their own laptops and any specialized hardware they might need for their projects."
       }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Name *",
+      "namePlaceholder": "Your full name",
+      "phone": "Contact Number *",
+      "phonePlaceholder": "+91 98765 43210",
+      "email": "Email ID *",
+      "emailPlaceholder": "your.email@example.com",
+      "message": "Message *",
+      "messagePlaceholder": "Tell us about your interest in the hackathon or any questions you have...",
+      "submitButton": "Send Message"
+    },
+    "info": {
+      "title": "Get in Touch",
+      "email": "hello@ezhumi.com",
+      "location": "Tamil Nadu, India",
+      "phone": "+91 98765 43210",
+      "hours": "Mon - Fri: 9:00 AM - 6:00 PM"
+    },
+    "social": {
+      "title": "Follow Us",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    },
+    "cta": {
+      "hasQuestions": "Have more questions?",
+      "contactSupport": "Contact Support",
+      "registerButton": "Register for Hackathon"
+    }
+  },
+  "register": {
+    "title": "Register Your Team",
+    "subtitle": "Join the Ezhumi Hackathon and build the future of agriculture",
+    "teamInfo": {
+      "title": "Team Information",
+      "teamName": "Team Name",
+      "teamNamePlaceholder": "Enter your team name",
+      "collegeName": "College Name",
+      "collegeNamePlaceholder": "Enter your college/institution name"
+    },
+    "teamLead": {
+      "title": "Team Lead Details",
+      "name": "Team Lead Name",
+      "namePlaceholder": "Enter team lead's full name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 98765 43210",
+      "email": "Email Address",
+      "emailPlaceholder": "teamlead@example.com"
+    },
+    "participants": {
+      "title": "Team Members",
+      "count": "Select number of additional team members",
+      "additional": "additional members",
+      "members": "members total",
+      "details": "Additional Team Members Details",
+      "participant": "Team Member",
+      "name": "Name",
+      "namePlaceholder": "Enter member's full name",
+      "contact": "Contact Number",
+      "contactPlaceholder": "+91 98765 43210",
+      "email": "Email Address",
+      "emailPlaceholder": "member@example.com"
+    },
+    "registerButton": "Register Team",
+    "sendOtpButton": "Send OTP & Continue",
+    "verifyAndRegisterButton": "Verify OTP & Register",
+    "registering": "Registering...",
+    "otp": {
+      "title": "OTP Verification",
+      "sentMessage": "OTP has been sent to {{email}} and {{phone}}. Please enter the 6-digit code below.",
+      "enterCode": "Enter OTP Code",
+      "resendButton": "Resend OTP"
+    },
+    "error": "Registration Error",
+    "successMessage": "Team registered successfully!",
+    "checkEmail": "A confirmation email has been sent to the team lead's email address.",
+    "backToHome": "Back to Home",
+    "errors": {
+      "allFieldsRequired": "All team information fields are required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "invalidPhone": "Please enter a valid phone number.",
+      "participantFieldsRequired": "All fields are required for team member {{number}}.",
+      "participantInvalidEmail": "Please enter a valid email for team member {{number}}.",
+      "participantInvalidPhone": "Please enter a valid phone number for team member {{number}}.",
+      "teamNameExists": "This team name is already taken. Please choose a different name.",
+      "teamLeadEmailExists": "This email address is already registered. Please use a different email.",
+      "duplicateEntry": "Registration already exists. Please check your details.",
+      "permissionDenied": "Permission denied. Please try again or contact support.",
+      "alreadyRegistered": "You have already registered for this hackathon. Each person can only register once.",
+      "checkError": "Unable to verify registration status. Please try again.",
+      "databaseError": "Failed to save registration. Please try again.",
+      "genericError": "An error occurred during registration. Please try again."
+    }
+  },
+  "registerSuccess": {
+    "title": "Registration Successful!",
+    "subtitle": "Your team has been registered for the Ezhumi Hackathon",
+    "successTitle": "Team Registration Complete",
+    "successMessage": "Your team registration has been submitted successfully. Welcome to Ezhumi Hackathon!",
+    "teamDetails": "Team Details",
+    "teamName": "Team Name",
+    "contactEmail": "Contact Email",
+    "contactPhone": "Contact Phone",
+    "emailConfirmation": "Email Confirmation Sent",
+    "emailInstructions": "A confirmation email with all details has been sent to the team lead's email address.",
+    "nextSteps": "What's Next?",
+    "step1": "Check your email for the confirmation message and event details",
+    "step2": "Join our official communication channels for updates",
+    "step3": "Review the hackathon timeline and prepare your ideas",
+    "step4": "Arrive on time at the venue with your team members",
+    "backToHome": "Back to Home",
+    "viewTimeline": "View Event Timeline",
+    "supportText": "Need help? Contact our support team:",
+    "supportEmail": "hello@ezhumi.com"
+  },
+  "signup": {
+    "title": "Create an Account",
+    "subtitle": "Sign up to participate in the Ezhumi Hackathon",
+    "name": "Full name",
+    "email": "Email address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "optional": "optional",
+    "signUpButton": "Sign up",
+    "sendOtpButton": "Send OTP & Continue",
+    "verifyAndSignUpButton": "Verify OTP & Sign Up",
+    "signingUp": "Signing up...",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "successMessage": "Account created successfully!",
+    "checkEmail": "Please check your email to confirm your account.",
+    "error": "Error",
+    "otp": {
+      "title": "Email Verification",
+      "sentMessage": "OTP has been sent to {{email}}. Please enter the 6-digit code below.",
+      "resendButton": "Resend OTP"
+    },
+    "errors": {
+      "allFieldsRequired": "All fields are required.",
+      "nameEmailRequired": "Name and email are required.",
+      "passwordsDoNotMatch": "Passwords do not match.",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "invalidOtp": "Invalid OTP. Please check and try again.",
+      "otpSendFailed": "Failed to send OTP. Please try again.",
+      "otpRequired": "Please enter the OTP code.",
+      "genericError": "An error occurred during signup. Please try again."
+    }
+  },
+  "login": {
+    "title": "Sign in to your account",
+    "subtitle": "Enter your credentials to access your account",
+    "email": "Email address",
+    "password": "Password",
+    "signInButton": "Sign in",
+    "signingIn": "Signing in...",
+    "forgotPassword": "Forgot your password?",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "error": "Error",
+    "errors": {
+      "allFieldsRequired": "All fields are required.",
+      "genericError": "An error occurred during login. Please try again."
     }
   }
 }

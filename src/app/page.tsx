@@ -144,35 +144,35 @@ export default function Home() {
           <div className="absolute -top-16 -right-16 w-32 h-32 bg-green-300/20 rounded-full blur-xl"></div>
           <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-green-400/20 rounded-full blur-xl"></div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center text-green-800 relative z-10">FAQ&apos;s</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center text-green-800 relative z-10">{t('faqs.title')}</h2>
           
           <div className="space-y-6 relative z-10">
             {[
               {
-                question: "What is the Ezhumi Hackathon about?",
-                answer: "Ezhumi is a 48-hour agriculture-focused hackathon where participants develop innovative solutions for farming challenges using technology, AI, IoT, and sustainable practices."
+                questionKey: 'faqs.questions.whatIs.question',
+                answerKey: 'faqs.questions.whatIs.answer'
               },
               {
-                question: "Who can participate in the hackathon?",
-                answer: "The hackathon is open to students, professionals, farmers, tech enthusiasts, and anyone passionate about agricultural innovation. Teams can be formed with members from diverse backgrounds."
+                questionKey: 'faqs.questions.whoCanParticipate.question',
+                answerKey: 'faqs.questions.whoCanParticipate.answer'
               },
               {
-                question: "What are the main themes for the hackathon?",
-                answer: "Our main themes include Smart Farming, Supply Chain Management, Crop Monitoring, Market Access, and Climate Resilience solutions for modern agriculture."
+                questionKey: 'faqs.questions.mainThemes.question',
+                answerKey: 'faqs.questions.mainThemes.answer'
               },
               {
-                question: "What is the prize pool and how are winners selected?",
-                answer: "We have a total prize pool of ₹1L+ with multiple categories. Winners are selected based on innovation, feasibility, impact on agriculture, and presentation quality by our expert jury panel."
+                questionKey: 'faqs.questions.prizes.question',
+                answerKey: 'faqs.questions.prizes.answer'
               },
               {
-                question: "Do I need to bring my own hardware or software?",
-                answer: "We provide basic infrastructure, WiFi, and development environments. However, participants are encouraged to bring their own laptops and any specialized hardware they might need for their projects."
+                questionKey: 'faqs.questions.hardware.question',
+                answerKey: 'faqs.questions.hardware.answer'
               }
             ].map((faq, index) => (
               <div key={index} className="bg-white/70 backdrop-blur-sm rounded-lg border border-green-200 shadow-md hover:shadow-lg transition-all duration-300">
                 <details className="group">
                   <summary className="flex justify-between items-center p-6 cursor-pointer list-none">
-                    <h3 className="text-lg font-semibold text-green-800 pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-semibold text-green-800 pr-4">{t(faq.questionKey)}</h3>
                     <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
                       <svg className="w-5 h-5 text-green-600 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -180,7 +180,7 @@ export default function Home() {
                     </div>
                   </summary>
                   <div className="px-6 pb-6">
-                    <p className="text-green-700 leading-relaxed">{faq.answer}</p>
+                    <p className="text-green-700 leading-relaxed">{t(faq.answerKey)}</p>
                   </div>
                 </details>
               </div>
@@ -189,9 +189,9 @@ export default function Home() {
           
           {/* Additional FAQ CTA */}
           <div className="text-center mt-12 relative z-10">
-            <p className="text-green-600 mb-4">Have more questions?</p>
+            <p className="text-green-600 mb-4">{t('contact.cta.hasQuestions')}</p>
             <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300 font-medium">
-              Contact Support
+              {t('contact.cta.contactSupport')}
             </button>
           </div>
         </div>
@@ -204,16 +204,16 @@ export default function Home() {
           <div className="absolute -top-20 -left-20 w-40 h-40 bg-green-400/10 rounded-full blur-xl"></div>
           <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-green-500/10 rounded-full blur-xl"></div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10">Contact Us</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10">{t('contact.title')}</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 relative z-10">
             {/* Left Side - Contact Form */}
             <div className="bg-green-800/30 backdrop-blur-sm rounded-lg p-4 sm:p-6 lg:p-8 border border-green-400/30 shadow-xl">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">Send us a Message</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">{t('contact.form.title')}</h3>
               <form className="space-y-4 sm:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-green-300 mb-2">
-                    Name *
+                    {t('contact.form.name')}
                   </label>
                   <input
                     type="text"
@@ -221,13 +221,13 @@ export default function Home() {
                     name="name"
                     required
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-green-900/30 border border-green-400/30 rounded-lg text-white placeholder-green-400/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
-                    placeholder="Your full name"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="contact" className="block text-sm font-medium text-green-300 mb-2">
-                    Contact Number *
+                    {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -235,13 +235,13 @@ export default function Home() {
                     name="contact"
                     required
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-green-900/30 border border-green-400/30 rounded-lg text-white placeholder-green-400/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
-                    placeholder="+91 98765 43210"
+                    placeholder={t('contact.form.phonePlaceholder')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-green-300 mb-2">
-                    Email ID *
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
@@ -249,13 +249,13 @@ export default function Home() {
                     name="email"
                     required
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-green-900/30 border border-green-400/30 rounded-lg text-white placeholder-green-400/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
-                    placeholder="your.email@example.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-green-300 mb-2">
-                    Message *
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
@@ -263,7 +263,7 @@ export default function Home() {
                     rows={4}
                     required
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-green-900/30 border border-green-400/30 rounded-lg text-white placeholder-green-400/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 resize-vertical text-sm sm:text-base"
-                    placeholder="Tell us about your interest in the hackathon or any questions you have..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   ></textarea>
                 </div>
                 
@@ -271,7 +271,7 @@ export default function Home() {
                   type="submit"
                   className="w-full px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 rounded-lg text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base"
                 >
-                  Send Message
+                  {t('contact.form.submitButton')}
                 </button>
               </form>
             </div>
@@ -280,71 +280,71 @@ export default function Home() {
             <div className="space-y-6 sm:space-y-8">
               {/* Get in Touch */}
               <div className="bg-green-800/30 backdrop-blur-sm rounded-lg p-4 sm:p-6 lg:p-8 border border-green-400/30 shadow-xl">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">Get in Touch</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">{t('contact.info.title')}</h3>
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-center space-x-3 text-green-100 text-sm sm:text-base">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    <span className="break-all">hello@ezhumi.com</span>
+                    <span className="break-all">{t('contact.info.email')}</span>
                   </div>
                   <div className="flex items-center space-x-3 text-green-100 text-sm sm:text-base">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
-                    <span>Tamil Nadu, India</span>
+                    <span>{t('contact.info.location')}</span>
                   </div>
                   <div className="flex items-center space-x-3 text-green-100 text-sm sm:text-base">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
-                    <span>+91 98765 43210</span>
+                    <span>{t('contact.info.phone')}</span>
                   </div>
                   <div className="flex items-center space-x-3 text-green-100 text-sm sm:text-base">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
-                    <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                    <span>{t('contact.info.hours')}</span>
                   </div>
                 </div>
               </div>
 
               {/* Follow Us */}
               <div className="bg-green-800/30 backdrop-blur-sm rounded-lg p-4 sm:p-6 lg:p-8 border border-green-400/30 shadow-xl">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">Follow Us</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-green-200">{t('contact.social.title')}</h3>
                 <div className="grid grid-cols-3 gap-3 sm:gap-4">
                   <a href="#" className="flex flex-col items-center p-3 sm:p-4 bg-green-600/30 rounded-lg hover:bg-green-500/50 transition-colors border border-green-400/30 group">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-300 group-hover:text-white mb-1 sm:mb-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
                     </svg>
-                    <span className="text-xs text-green-200 group-hover:text-white text-center">Twitter</span>
+                    <span className="text-xs text-green-200 group-hover:text-white text-center">{t('contact.social.twitter')}</span>
                   </a>
                   <a href="#" className="flex flex-col items-center p-3 sm:p-4 bg-green-600/30 rounded-lg hover:bg-green-500/50 transition-colors border border-green-400/30 group">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-300 group-hover:text-white mb-1 sm:mb-2" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
-                    <span className="text-xs text-green-200 group-hover:text-white text-center">LinkedIn</span>
+                    <span className="text-xs text-green-200 group-hover:text-white text-center">{t('contact.social.linkedin')}</span>
                   </a>
                   <a href="#" className="flex flex-col items-center p-3 sm:p-4 bg-green-600/30 rounded-lg hover:bg-green-500/50 transition-colors border border-green-400/30 group">
                     <svg className="w-6 h-6 text-green-300 group-hover:text-white mb-2" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
-                    <span className="text-xs text-green-200 group-hover:text-white">Instagram</span>
+                    <span className="text-xs text-green-200 group-hover:text-white">{t('contact.social.instagram')}</span>
                   </a>
                 </div>
                 
                 {/* Newsletter Signup */}
                 <div className="mt-6 pt-6 border-t border-green-400/30">
-                  <h4 className="text-lg font-medium mb-3 text-green-200">Stay Updated</h4>
+                  <h4 className="text-lg font-medium mb-3 text-green-200">{t('contact.newsletter.title')}</h4>
                   <div className="flex space-x-2">
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder={t('contact.newsletter.placeholder')}
                       className="flex-1 px-3 py-2 bg-green-900/30 border border-green-400/30 rounded text-white placeholder-green-400/60 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm"
                     />
                     <button className="px-4 py-2 bg-green-600 hover:bg-green-500 rounded text-white text-sm font-medium transition-colors duration-300">
-                      Subscribe
+                      {t('contact.newsletter.subscribe')}
                     </button>
                   </div>
                 </div>
@@ -354,9 +354,11 @@ export default function Home() {
           
           {/* Registration CTA */}
           <div className="text-center mt-16 relative z-10">
-            <button className="px-12 py-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 border border-green-400 text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-500 text-lg transform hover:-translate-y-1">
-              Register for Hackathon
-            </button>
+            <a href="/register">
+              <button className="px-12 py-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 border border-green-400 text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-500 text-lg transform hover:-translate-y-1">
+                {t('contact.cta.registerButton')}
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -371,7 +373,7 @@ export default function Home() {
             
             {/* Logo & Description */}
             <div className="lg:col-span-2">
-              <h2 className="text-4xl font-bold text-white mb-4 tracking-wider">EZHUMI</h2>
+              <h2 className="text-4xl font-bold text-white mb-4 tracking-wider">{t('hero.title', 'EZHUMI')}</h2>
               <p className="text-green-200/80 text-sm leading-relaxed mb-6 max-w-md">
                 Empowering agricultural innovation through technology. Join us in creating sustainable solutions for tomorrow&apos;s farming challenges.
               </p>

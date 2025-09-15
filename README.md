@@ -23,6 +23,7 @@ A comprehensive, production-quality landing page for the Ezhumi Agriculture Hack
 - **FAQ Section**: 5 expandable cards with hackathon information
 - **Contact Form**: Complete form with Name, Contact Number, Email, Message fields
 - **Footer**: Comprehensive footer with social media links and college information
+- **Authentication**: User signup, login, and dashboard pages with Supabase integration
 
 ## 🛠️ Installation & Setup
 
@@ -56,6 +57,114 @@ A comprehensive, production-quality landing page for the Ezhumi Agriculture Hack
 5. **Open browser:**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
+## 🔐 Authentication Setup
+
+### Supabase Configuration
+1. Create a Supabase project at [supabase.com](https://supabase.com/)
+2. Copy your project URL and anon key from the Supabase dashboard
+3. Create a `.env.local` file in the root directory
+4. Add your Supabase credentials to the `.env.local` file:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+   ```
+5. Restart the development server
+
+### Database Setup
+1. **Create the team_registrations table** by running this SQL in your Supabase SQL editor:
+
+```sql
+-- Create team_registrations table
+CREATE TABLE team_registrations (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    team_name VARCHAR(100) NOT NULL,
+    team_lead_name VARCHAR(100) NOT NULL,
+    team_lead_email VARCHAR(255) NOT NULL UNIQUE,
+    college_name VARCHAR(200) NOT NULL,
+    participant_count INTEGER NOT NULL CHECK (participant_count >= 1 AND participant_count <= 4),
+    participants JSONB NOT NULL,
+    registration_date TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create indexes for better performance
+CREATE INDEX idx_team_registrations_email ON team_registrations(team_lead_email);
+CREATE INDEX idx_team_registrations_team_name ON team_registrations(team_name);
+CREATE INDEX idx_team_registrations_registration_date ON team_registrations(registration_date);
+
+-- Create a function to update the updated_at column
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Create trigger to automatically update updated_at
+CREATE TRIGGER update_team_registrations_updated_at 
+    BEFORE UPDATE ON team_registrations 
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Enable Row Level Security
+ALTER TABLE team_registrations ENABLE ROW LEVEL SECURITY;
+
+-- Create RLS policies
+CREATE POLICY "Users can insert their own registration" ON team_registrations
+    FOR INSERT 
+    WITH CHECK (true);
+
+CREATE POLICY "Users can view all registrations" ON team_registrations
+    FOR SELECT 
+    USING (true);
+```
+
+2. **Set up RLS policies** according to your security requirements
+
+## 📧 Email Configuration with Supabase Edge Functions
+
+### Setup Email Service
+1. **Deploy the Edge Function:**
+   ```bash
+   # Install Supabase CLI
+   npm install -g supabase
+   
+   # Link to your project
+   supabase link --project-ref YOUR_PROJECT_REF
+   
+   # Deploy the email function
+   supabase functions deploy send-confirmation-email
+   ```
+
+2. **Configure Email Service** in your Supabase dashboard (Project Settings > Edge Functions):
+   ```
+   EMAIL_API_KEY=your_email_service_api_key
+   EMAIL_API_URL=your_email_service_api_endpoint
+   FROM_EMAIL=noreply@yourdomain.com
+   ```
+
+3. **Email Service Examples:**
+   
+   **SendGrid:**
+   ```
+   EMAIL_API_KEY=SG.your_sendgrid_api_key
+   EMAIL_API_URL=https://api.sendgrid.com/v3/mail/send
+   ```
+   
+   **Resend:**
+   ```
+   EMAIL_API_KEY=re_your_resend_api_key
+   EMAIL_API_URL=https://api.resend.com/emails
+   ```
+
+### Email Features
+- **Confirmation Emails**: Automatic email sent upon registration
+- **Professional Templates**: Styled HTML emails with team details
+- **Registration Details**: Complete information including team members
+- **Unique Registration IDs**: For tracking and reference
+
 ## 📁 Project Structure
 
 ```
@@ -63,6 +172,12 @@ src/
 ├── app/
 │   ├── layout.tsx          # Root layout with Space Grotesk font
 │   ├── page.tsx            # Main landing page with all sections
+│   ├── signup/
+│   │   └── page.tsx        # User signup page
+│   ├── login/
+│   │   └── page.tsx        # User login page
+│   ├── dashboard/
+│   │   └── page.tsx        # User dashboard
 │   ├── globals.css         # Global styles and cursor pointer definitions
 │   └── favicon.ico         # Website favicon
 ├── components/
@@ -70,6 +185,14 @@ src/
 │   ├── TopHeader.tsx       # Header with logo, language switcher, hamburger menu
 │   ├── MenuDrawer.tsx      # Swiss design menu with GSAP flow animations
 │   └── VerticalLine.tsx    # Decorative vertical lines
+├── contexts/
+│   └── AuthContext.tsx     # Authentication context provider
+├── lib/
+│   └── supabaseClient.ts   # Supabase client configuration
+├── locales/
+│   ├── en/common.json      # English translations
+│   ├── ta/common.json      # Tamil translations
+│   └── hi/common.json      # Hindi translations
 public/
 ├── media/
 │   └── video.mp4           # Background video file

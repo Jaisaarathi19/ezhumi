@@ -1,14 +1,18 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { useGsapAnimations } from '@/hooks/useGsapAnimations';
 
 export const Hero: React.FC = () => {
+  const { t } = useTranslation('common');
+  const router = useRouter();
+  
   // Initialize GSAP animations
   useGsapAnimations();
 
   const handleRegisterClick = () => {
-    // Add registration logic here
-    console.log('Register button clicked');
+    router.push('/register');
   };
 
   const handleExploreThemeClick = () => {
@@ -42,13 +46,13 @@ export const Hero: React.FC = () => {
         {/* Main Headline - Left Aligned */}
         <div className="hero-headline mb-12 max-w-4xl">
           <div className="hero-headline-word text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none tracking-tight font-grotesk mb-2 drop-shadow-2xl opacity-0">
-            HACK.
+            {t('hero.headline1')}
           </div>
           <div className="hero-headline-word text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none tracking-tight font-grotesk mb-2 drop-shadow-2xl opacity-0">
-            SEEK.
+            {t('hero.headline2')}
           </div>
           <div className="hero-headline-word text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none tracking-tight font-grotesk drop-shadow-2xl opacity-0">
-            CULTIVATE.
+            {t('hero.headline3')}
           </div>
         </div>
 
@@ -57,17 +61,17 @@ export const Hero: React.FC = () => {
           {/* Register Now - Green Background */}
           <button
             onClick={handleRegisterClick}
-            className="px-8 py-4 bg-green-600 text-white font-medium border-2 border-green-600 hover:bg-green-700 hover:border-green-700 transition-all duration-300 uppercase tracking-wide text-sm font-grotesk"
+            className="px-8 py-4 bg-green-600 text-white font-medium border-2 border-green-600 hover:bg-green-700 hover:border-green-700 transition-all duration-300 uppercase tracking-wide text-sm font-grotesk rounded-lg"
           >
-            Register Now
+            {t('hero.registerButton')}
           </button>
           
           {/* Explore Theme - White Background */}
           <button
             onClick={handleExploreThemeClick}
-            className="px-8 py-4 bg-white text-black font-medium border-2 border-white hover:bg-gray-100 hover:border-gray-100 transition-all duration-300 uppercase tracking-wide text-sm font-grotesk"
+            className="px-8 py-4 bg-white text-black font-medium border-2 border-white hover:bg-gray-100 hover:border-gray-100 transition-all duration-300 uppercase tracking-wide text-sm font-grotesk rounded-lg"
           >
-            Explore Theme
+            {t('hero.exploreButton')}
           </button>
         </div>
       </div>

@@ -287,14 +287,24 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ isOpen, onClose }) => {
     { label: 'Themes', href: '#themes' },
     { label: 'FAQ\'s', href: '#faqs' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Login', href: '/login' },
+    { label: 'Sign Up', href: '/signup' },
   ];
 
   const handleLinkClick = (href: string) => {
     onClose();
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    }, 500);
+    
+    // Check if it's a page route (starts with '/') or an anchor link
+    if (href.startsWith('/')) {
+      // For page routes, navigate directly
+      window.location.href = href;
+    } else {
+      // For anchor links, scroll to the element
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
   };
 
   const addToMenuRefs = (el: HTMLButtonElement | null, index: number) => {
