@@ -95,8 +95,8 @@ export default function AdminDashboard() {
       console.log('Fetched and formatted registrations:', formattedData);
       setRegistrations(formattedData);
       setLoading(false);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
     }
   };
@@ -260,7 +260,7 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
           <div className="text-white text-xl mb-4">Access Denied</div>
-          <div className="text-gray-400 mb-6">You don't have permission to access this admin dashboard.</div>
+          <div className="text-gray-400 mb-6">You don&apos;t have permission to access this admin dashboard.</div>
           <button
             onClick={() => router.push('/')}
             className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
@@ -345,7 +345,7 @@ export default function AdminDashboard() {
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">Today's Registrations</p>
+                <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">Today&apos;s Registrations</p>
                 <p className="text-2xl font-bold text-white mt-2">{todayRegistrations}</p>
               </div>
               <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/20">
@@ -800,7 +800,7 @@ export default function AdminDashboard() {
                     console.log('Is Array:', Array.isArray(participants));
                     
                     // Handle different data formats
-                    let participantList: any[] = [];
+                    let participantList: unknown[] = [];
                     
                     if (typeof participants === 'string') {
                       try {
@@ -827,29 +827,34 @@ export default function AdminDashboard() {
                     
                     // Show first item structure if available
                     if (participantList.length > 0) {
+                      const firstParticipant = participantList[0] as Record<string, unknown>;
                       console.log('First participant structure:');
-                      console.log('  name:', participantList[0].name);
-                      console.log('  email:', participantList[0].email);
-                      console.log('  contact:', participantList[0].contact);
-                      console.log('  phone:', participantList[0].phone);
-                      console.log('  All keys:', Object.keys(participantList[0]));
+                      console.log('  name:', firstParticipant.name);
+                      console.log('  email:', firstParticipant.email);
+                      console.log('  contact:', firstParticipant.contact);
+                      console.log('  phone:', firstParticipant.phone);
+                      console.log('  All keys:', Object.keys(firstParticipant));
                     }
 
                     // Filter out invalid entries and normalize data
-                    const validParticipants = participantList.filter((p: any) => {
-                      if (!p) return false;
+                    const validParticipants = participantList.filter((p: unknown) => {
+                      if (!p || typeof p !== 'object') return false;
+                      const participant = p as Record<string, unknown>;
                       
                       // Check if participant has at least name, email, or contact/phone
-                      const hasName = p.name || p.participant_name || p.memberName;
-                      const hasEmail = p.email || p.participant_email || p.memberEmail;  
-                      const hasPhone = p.phone || p.participant_phone || p.memberPhone || p.contact; // Add 'contact' field
+                      const hasName = participant.name || participant.participant_name || participant.memberName;
+                      const hasEmail = participant.email || participant.participant_email || participant.memberEmail;  
+                      const hasPhone = participant.phone || participant.participant_phone || participant.memberPhone || participant.contact; // Add 'contact' field
                       
                       return hasName || hasEmail || hasPhone;
-                    }).map((p: any) => ({
-                      name: p.name || p.participant_name || p.memberName || 'N/A',
-                      email: p.email || p.participant_email || p.memberEmail || 'N/A',
-                      phone: p.phone || p.participant_phone || p.memberPhone || p.contact || 'N/A' // Map contact to phone
-                    }));
+                    }).map((p: unknown) => {
+                      const participant = p as Record<string, unknown>;
+                      return {
+                        name: String(participant.name || participant.participant_name || participant.memberName || 'N/A'),
+                        email: String(participant.email || participant.participant_email || participant.memberEmail || 'N/A'),
+                        phone: String(participant.phone || participant.participant_phone || participant.memberPhone || participant.contact || 'N/A') // Map contact to phone
+                      };
+                    });
 
                     console.log('Final valid participants:', validParticipants);
                     console.log('=== END DEBUG ===');
@@ -859,7 +864,7 @@ export default function AdminDashboard() {
                         <div className="text-sm text-green-400 font-medium mb-4 bg-green-500/10 px-3 py-2 rounded-lg border border-green-500/20">
                           ✓ Found {validParticipants.length} team member{validParticipants.length !== 1 ? 's' : ''}
                         </div>
-                        {validParticipants.map((participant: any, idx: number) => (
+                        {validParticipants.map((participant: { name: string; email: string; phone: string }, idx: number) => (
                           <div key={idx} className="border border-gray-700 rounded-lg p-4 bg-gray-900 hover:bg-gray-800 transition-colors">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                               <div>
@@ -939,12 +944,12 @@ export default function AdminDashboard() {
                       let participantCount = 0;
                       
                       // Calculate actual participant count using the same logic as team members display
-                      let participantList: any[] = [];
+                      let participantList: unknown[] = [];
                       
                       if (typeof participants === 'string') {
                         try {
                           participantList = JSON.parse(participants);
-                        } catch (e) {
+                        } catch {
                           participantList = [];
                         }
                       } else if (Array.isArray(participants)) {
@@ -954,12 +959,13 @@ export default function AdminDashboard() {
                       }
 
                       // Count valid participants using same validation logic
-                      participantCount = participantList.filter((p: any) => {
-                        if (!p) return false;
+                      participantCount = participantList.filter((p: unknown) => {
+                        if (!p || typeof p !== 'object') return false;
+                        const participant = p as Record<string, unknown>;
                         
-                        const hasName = p.name || p.participant_name || p.memberName;
-                        const hasEmail = p.email || p.participant_email || p.memberEmail;  
-                        const hasPhone = p.phone || p.participant_phone || p.memberPhone || p.contact; // Add 'contact' field
+                        const hasName = participant.name || participant.participant_name || participant.memberName;
+                        const hasEmail = participant.email || participant.participant_email || participant.memberEmail;  
+                        const hasPhone = participant.phone || participant.participant_phone || participant.memberPhone || participant.contact; // Add 'contact' field
                         
                         return hasName || hasEmail || hasPhone;
                       }).length;

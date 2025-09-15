@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
       teamLeadEmail,
       collegeName,
       participantCount,
-      participants,
       registrationId
     } = body;
 

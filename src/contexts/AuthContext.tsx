@@ -3,11 +3,12 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
+import { User, AuthResponse } from '@supabase/supabase-js';
 
 interface AuthContextType {
-  user: any;
-  signUp: (email: string, password: string) => Promise<any>;
-  signIn: (email: string, password: string) => Promise<any>;
+  user: User | null;
+  signUp: (email: string, password: string) => Promise<AuthResponse>;
+  signIn: (email: string, password: string) => Promise<AuthResponse>;
   signOut: () => Promise<void>;
   loading: boolean;
 }
@@ -15,7 +16,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
