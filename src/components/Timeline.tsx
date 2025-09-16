@@ -142,14 +142,14 @@ export const Timeline: React.FC = () => {
       status: "featured"
     },
     {
-      date: "October 14, 2025",
-      title: "Final Pitch Presentations",
-      description: "Shortlisted teams present their solutions to the jury panel for final evaluation.",
+      date: "October 14, 2025", 
+      title: "Final Pitch (Project Exhibition)",
+      description: "Shortlisted teams present their solutions to the jury panel for final evaluation and project exhibition.",
       status: "featured"
     },
     {
       date: "October 16, 2025",
-      title: "Valedictory Programme",
+      title: "Valedictory Programme", 
       description: "Closing ceremony with prize distribution and recognition of outstanding participants.",
       status: "future"
     }
@@ -184,7 +184,7 @@ export const Timeline: React.FC = () => {
           <p className={`text-sm sm:text-base text-green-500 mt-3 max-w-xl mx-auto italic transition-all duration-1000 delay-700 ${
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            * All dates are tentative and subject to change
+            * 24-hour hackathon, final pitch, and valedictory dates are tentative and subject to change
           </p>
         </div>
         
