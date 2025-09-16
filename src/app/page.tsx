@@ -546,7 +546,7 @@ export default function Home() {
             <div>
               <h3 className="text-white font-medium mb-4 text-sm uppercase tracking-wider">Hackathon</h3>
               <ul className="space-y-3">
-                <li><a href="/register" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Register Now</a></li>
+                <li><a href="/signup" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Register Now</a></li>
                 <li><a href="#timeline" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Event Timeline</a></li>
                 <li><a href="#themes" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Themes</a></li>
                 <li><a href="#faqs" className="text-green-200/70 hover:text-green-200 transition-colors duration-300 text-sm">Rules & FAQ</a></li>

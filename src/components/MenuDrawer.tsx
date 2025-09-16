@@ -286,9 +286,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ isOpen, onClose }) => {
     { label: 'About', href: '#about' },
     { label: 'Themes', href: '#themes' },
     { label: 'FAQ\'s', href: '#faqs' },
-    { label: 'Contact', href: '#contact' },
-    { label: 'Login', href: '/login' },
-    { label: 'Sign Up', href: '/signup' },
+    { label: 'Contact', href: '#contact' }
   ];
 
   const handleLinkClick = (href: string) => {
