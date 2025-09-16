@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
@@ -10,6 +10,11 @@ import { Timeline } from '@/components/Timeline';
 
 export default function Home() {
   const { t } = useTranslation('common');
+  
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('2S-vChDTYaoMkzIT5');
+  }, []);
   
   // Contact form state
   const [contactForm, setContactForm] = useState({
@@ -64,9 +69,8 @@ export default function Home() {
       // Send email using EmailJS
       const result = await emailjs.send(
         'service_puxchye', // Your service ID
-        'template_contact', // Template ID (you'll need to create this in EmailJS dashboard)
-        templateParams,
-        'YOUR_PUBLIC_KEY' // Your public key from EmailJS dashboard
+        'template_el2wgzo', // Template ID (you'll need to create this in EmailJS dashboard)
+        templateParams
       );
 
       console.log('Email sent successfully:', result);
@@ -83,11 +87,27 @@ export default function Home() {
         email: '',
         message: ''
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to send email:', error);
+      
+      // More specific error messages
+      let errorMessage = 'Failed to send message. ';
+      
+      if (error.status === 400) {
+        errorMessage += 'Please check your internet connection and try again.';
+      } else if (error.status === 402) {
+        errorMessage += 'Email service quota exceeded. Please contact us directly.';
+      } else if (error.text?.includes('template')) {
+        errorMessage += 'Email template configuration issue. Please contact us directly.';
+      } else if (error.text?.includes('service')) {
+        errorMessage += 'Email service configuration issue. Please contact us directly.';
+      } else {
+        errorMessage += 'Please try again later or contact us directly at office.edc@rajalakshmi.edu.in';
+      }
+      
       setSubmitStatus({ 
         type: 'error', 
-        message: 'Failed to send message. Please try again later or contact us directly at office.edc@rajalakshmi.edu.in' 
+        message: errorMessage
       });
     } finally {
       setIsSubmitting(false);
