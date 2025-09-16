@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from './LanguageProvider';
 import { useAuth } from '@/contexts/AuthContext';
+import Image from 'next/image';
 
 export const TopHeader: React.FC = () => {
   const { t, i18n } = useTranslation('common');
@@ -42,16 +43,25 @@ export const TopHeader: React.FC = () => {
           : 'bg-black/30 backdrop-blur-sm border-b border-white/20'
       }`}>
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Left side - Logo and Language Switcher */}
-          <div className="flex items-center space-x-4 lg:space-x-6">
-            {/* Logo */}
+          {/* Left side - Ezhumi Logo, Title, and Language Switcher */}
+          <div className="flex items-center space-x-4">
+            {/* Ezhumi Logo */}
+            <div className="flex-shrink-0">
+              <Image
+                src="/logos/ezhumi-logo.svg"
+                alt="Ezhumi Logo"
+                width={80}
+                height={80}
+                className="w-10 h-10 sm:w-10 sm:h-10 lg:w-11 lg:h-11"
+              />
+            </div>
+            {/* Title */}
             <div className="logo">
               <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wider font-grotesk">
                 {t('hero.title', 'EZHUMI')}
               </h1>
             </div>
-
-            {/* Language Switcher - Hidden on mobile, visible from md screens */}
+            {/* Language Switcher - Immediately after title */}
             <div className="language-switcher hidden md:flex items-center space-x-2 text-sm font-light text-white/80 font-grotesk">
               {languages.map((lang, index) => (
                 <div key={lang.code} className="flex items-center">
@@ -71,6 +81,24 @@ export const TopHeader: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Center - Partner Logos */}
+          <div className="flex items-center space-x-3 lg:space-x-4 absolute left-1/2 transform -translate-x-1/2">
+            <Image
+              src="/logos/rec-logo.svg"
+              alt="REC - Rajalakshmi Engineering College"
+              width={60}
+              height={60}
+              className="w-25 h-10 sm:w-40 sm:h-20 lg:w-40 lg:h-20 xl:w-38 xl:h-16"
+            />
+            <Image
+              src="/logos/edc-logo.svg"
+              alt="EDC - Entrepreneurship Development Cell"
+              width={60}
+              height={60}
+              className="w-15 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 xl:w-25 xl:h-16"
+            />
           </div>
 
           {/* Right side - Authentication Links and Hamburger Menu */}
