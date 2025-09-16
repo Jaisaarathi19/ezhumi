@@ -84,7 +84,7 @@ export const TopHeader: React.FC = () => {
           </div>
 
           {/* Center - Partner Logos */}
-          <div className="flex items-center space-x-3 lg:space-x-4 absolute left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center space-x-3 lg:space-x-4 absolute left-[60%] sm:left-[52%] lg:left-1/2 transform -translate-x-1/2">
             <Image
               src="/logos/rec-logo.svg"
               alt="REC - Rajalakshmi Engineering College"
