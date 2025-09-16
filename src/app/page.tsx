@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
 import { Hero } from '@/components/Hero';
 import { TopHeader } from '@/components/TopHeader';
 import { Timeline } from '@/components/Timeline';
@@ -51,15 +52,28 @@ export default function Home() {
     }
 
     try {
-      // Simulate form submission (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Here you would typically send the data to your backend or email service
-      console.log('Contact form submitted:', contactForm);
+      // EmailJS configuration
+      const templateParams = {
+        from_name: contactForm.name,
+        from_email: contactForm.email,
+        phone: contactForm.contact,
+        message: contactForm.message,
+        to_email: 'office.edc@rajalakshmi.edu.in'
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'service_puxchye', // Your service ID
+        'template_contact', // Template ID (you'll need to create this in EmailJS dashboard)
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Your public key from EmailJS dashboard
+      );
+
+      console.log('Email sent successfully:', result);
       
       setSubmitStatus({ 
         type: 'success', 
-        message: 'Thank you for your message! We will get back to you soon.' 
+        message: 'Thank you for your message! We have received it and will get back to you soon.' 
       });
       
       // Reset form
@@ -70,9 +84,10 @@ export default function Home() {
         message: ''
       });
     } catch (error) {
+      console.error('Failed to send email:', error);
       setSubmitStatus({ 
         type: 'error', 
-        message: 'Failed to send message. Please try again later.' 
+        message: 'Failed to send message. Please try again later or contact us directly at office.edc@rajalakshmi.edu.in' 
       });
     } finally {
       setIsSubmitting(false);
