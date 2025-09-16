@@ -136,21 +136,21 @@ export const Timeline: React.FC = () => {
       status: "upcoming"
     },
     {
-      date: "October 13, 2025",
+      date: "October 13, 2025 *",
       title: "24-Hour Hackathon",
-      description: "The main event! 24 hours of continuous coding, innovation, and problem-solving.",
+      description: "The main event! 24 hours of continuous coding, innovation, and problem-solving. *Tentative date - subject to change.",
       status: "featured"
     },
     {
-      date: "October 14, 2025", 
+      date: "October 14, 2025 *", 
       title: "Final Pitch (Project Exhibition)",
-      description: "Shortlisted teams present their solutions to the jury panel for final evaluation and project exhibition.",
+      description: "Shortlisted teams present their solutions to the jury panel for final evaluation and project exhibition. *Tentative date - subject to change.",
       status: "featured"
     },
     {
-      date: "October 16, 2025",
+      date: "October 16, 2025 *",
       title: "Valedictory Programme", 
-      description: "Closing ceremony with prize distribution and recognition of outstanding participants.",
+      description: "Closing ceremony with prize distribution and recognition of outstanding participants. *Tentative date - subject to change.",
       status: "future"
     }
   ];
@@ -181,11 +181,28 @@ export const Timeline: React.FC = () => {
           }`}>
             {t('timeline.subtitle')}
           </p>
-          <p className={`text-sm sm:text-base text-green-500 mt-3 max-w-xl mx-auto italic transition-all duration-1000 delay-700 ${
+          
+          {/* Enhanced Disclaimer */}
+          <div className={`mt-6 mx-auto max-w-3xl transition-all duration-1000 delay-700 ${
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            * Oct 13, 14, and 16 are tentative dates and subject to change
-          </p>
+            <div className="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 shadow-md">
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0">
+                  <svg className="w-5 h-5 text-amber-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-amber-800 mb-1">Important Notice</h4>
+                  <p className="text-sm text-amber-700 leading-relaxed">
+                    <strong>Please note:</strong> The dates for <strong>24-Hour Hackathon (October 13, 2025)</strong>, <strong>Final Pitch & Project Exhibition (October 14, 2025)</strong>, and <strong>Valedictory Programme (October 16, 2025)</strong> are <em>tentative</em> and subject to change. 
+                    Participants will be notified of any updates via email and official announcements.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div className="relative z-10">
