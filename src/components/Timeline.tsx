@@ -8,8 +8,6 @@ interface TimelineEvent {
   date: string;
   title: string;
   description: string;
-  time: string;
-  icon: string;
   status: 'upcoming' | 'featured' | 'future';
 }
 
@@ -30,8 +28,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index, t }) => {
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      {/* Enhanced Timeline dot with icon */}
-      <div className={`absolute left-4 sm:left-1/2 top-8 w-8 h-8 sm:w-12 sm:h-12 rounded-full border-4 border-white shadow-xl transform sm:-translate-x-1/2 z-20 flex items-center justify-center text-lg sm:text-xl transition-all duration-500 ${
+      {/* Enhanced Timeline dot */}
+      <div className={`absolute left-4 sm:left-1/2 top-8 w-8 h-8 sm:w-12 sm:h-12 rounded-full border-4 border-white shadow-xl transform sm:-translate-x-1/2 z-20 transition-all duration-500 ${
         isVisible ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
       } group-hover:scale-110 ${
         event.status === 'featured' 
@@ -40,7 +38,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index, t }) => {
           ? 'bg-gradient-to-br from-green-300 to-green-500'
           : 'bg-gradient-to-br from-green-500 to-green-700'
       }`}>
-        <span className="text-white text-sm sm:text-base">{event.icon}</span>
       </div>
       
       {/* Mobile Layout: Enhanced cards */}
@@ -55,13 +52,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index, t }) => {
               <h3 className="text-xl font-bold text-green-800 leading-tight flex-1 group-hover:text-green-700 transition-colors">
                 {event.title}
               </h3>
-              <span className={`text-xs font-bold px-3 py-2 rounded-full whitespace-nowrap flex-shrink-0 ${
-                event.status === 'featured'
-                  ? 'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-md'
-                  : 'bg-green-100 text-green-700 border border-green-200'
-              }`}>
-                {event.time}
-              </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -89,13 +79,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, index, t }) => {
               <h3 className="text-2xl font-bold text-green-800 group-hover:text-green-700 transition-colors">
                 {event.title}
               </h3>
-              <span className={`text-sm font-bold px-4 py-2 rounded-full self-start ${
-                event.status === 'featured'
-                  ? 'bg-gradient-to-r from-green-400 to-green-500 text-white shadow-lg'
-                  : 'bg-green-100 text-green-700 border border-green-200'
-              }`}>
-                {event.time}
-              </span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
@@ -123,67 +106,51 @@ export const Timeline: React.FC = () => {
 
   const events: TimelineEvent[] = [
     {
-      date: "September 17, 2024",
+      date: "September 17, 2025",
       title: "Registrations Open",
       description: "Online registration for EZHUMI hackathon begins. Students can sign up and form teams.",
-      time: "All Day",
-      icon: "🚀",
       status: "upcoming"
     },
     {
-      date: "October 1, 2024",
+      date: "October 1, 2025",
       title: "Registration Deadline",
       description: "Last date to register for the hackathon. Make sure to complete your registration before time runs out.",
-      time: "11:59 PM",
-      icon: "⏰",
       status: "upcoming"
     },
     {
-      date: "October 4, 2024",
+      date: "October 4, 2025",
       title: "Shortlisted Participants Announcement",
       description: "List of selected participants will be announced. Check your email for confirmation.",
-      time: "5:00 PM",
-      icon: "✅",
       status: "upcoming"
     },
     {
-      date: "October 6, 2024",
+      date: "October 6, 2025",
       title: "Inauguration & Bootcamp",
       description: "Official inauguration of EZHUMI followed by intensive bootcamp sessions for participants.",
-      time: "9:00 AM",
-      icon: "🎉",
       status: "upcoming"
     },
     {
-      date: "October 7, 2024",
+      date: "October 7, 2025",
       title: "Industrial Visit",
       description: "Educational visit to partner industries to understand real-world applications and technologies.",
-      time: "8:00 AM",
-      icon: "🏭",
       status: "upcoming"
     },
     {
-      date: "October 13, 2024",
+      date: "October 13, 2025",
       title: "24-Hour Hackathon",
       description: "The main event! 24 hours of continuous coding, innovation, and problem-solving.",
-      time: "9:00 AM - 9:00 AM (Next Day)",
-      icon: "💻",
       status: "featured"
     },
     {
-      date: "October 14, 2024",
+      date: "October 14, 2025",
       title: "Final Pitch Presentations",
       description: "Shortlisted teams present their solutions to the jury panel for final evaluation.",
-      time: "10:00 AM",
-      icon: "🏆",
       status: "featured"
     },
     {
-      date: "October 16, 2024",
+      date: "October 16, 2025",
       title: "Valedictory Programme",
       description: "Closing ceremony with prize distribution and recognition of outstanding participants.",
-      time: "6:00 PM",
-      icon: "�",
       status: "future"
     }
   ];
