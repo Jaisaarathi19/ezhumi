@@ -249,6 +249,10 @@
       }
     }
   },
+  "themesCallToAction": {
+    "readyText": "Ready to tackle one of these challenges?",
+    "registerButton": "Register Your Team"
+  },
   "timeline": {
     "title": "Event Timeline",
     "subtitle": "Your journey from registration to innovation starts here",
@@ -288,27 +292,47 @@
     "continueJourney": "Your innovation journey continues..."
   },
   "faqs": {
-    "title": "FAQ's",
+    "title": "FAQ – Ezhumi Bootcamp",
     "questions": {
-      "whatIs": {
-        "question": "What is the Ezhumi Hackathon about?",
-        "answer": "Ezhumi is a 48-hour agriculture-focused hackathon where participants develop innovative solutions for farming challenges using technology, AI, IoT, and sustainable practices."
+      "eventFlow": {
+        "question": "What is the event flow of Ezhumi?",
+        "answer": "• Round 1: Online Project Submission – Open to all students & innovators (No entry fee).\n• Jury Evaluation – Projects shortlisted based on innovation & creativity.\n• Top 50 Teams Selection – Jury will select the best 50 teams.\n• Boot camp + Finals – The 50 selected teams will attend the Boot camp and directly pitch in the Finals (Boot camp fee applicable)."
       },
-      "whoCanParticipate": {
-        "question": "Who can participate in the hackathon?",
-        "answer": "The hackathon is open to students, professionals, farmers, tech enthusiasts, and anyone passionate about agricultural innovation. Teams can be formed with members from diverse backgrounds."
+      "teamSize": {
+        "question": "How many members can be in a team?",
+        "answer": "A team can have 2 to 4 members."
       },
-      "mainThemes": {
-        "question": "What are the main themes for the hackathon?",
-        "answer": "Our main themes include Smart Farming, Supply Chain Management, Crop Monitoring, Market Access, and Climate Resilience solutions for modern agriculture."
+      "problemStatements": {
+        "question": "How many problem statements will be given?",
+        "answer": "Each team will work on only one problem statement."
       },
-      "prizes": {
-        "question": "What is the prize pool and how are winners selected?",
-        "answer": "We have a total prize pool of ₹1L+ with multiple categories. Winners are selected based on innovation, feasibility, impact on agriculture, and presentation quality by our expert jury panel."
+      "pitchDuration": {
+        "question": "What is the time duration for the final pitch?",
+        "answer": "Every team will get 10 minutes to present their solution."
       },
-      "hardware": {
-        "question": "Do I need to bring my own hardware or software?",
-        "answer": "We provide basic infrastructure, WiFi, and development environments. However, participants are encouraged to bring their own laptops and any specialized hardware they might need for their projects."
+      "round1Participation": {
+        "question": "Who can participate in Round 1?",
+        "answer": "Any college student or innovator can participate in the first round."
+      },
+      "registrationFee": {
+        "question": "Is there any entry/registration fee?",
+        "answer": "• Round 1 (Online Submission): Free\n• Bootcamp (Top 50 Teams): Fee applicable"
+      },
+      "bootcampRegistration": {
+        "question": "Who can register for the Bootcamp?",
+        "answer": "Only the Top 50 selected teams will register and attend the Bootcamp + Finals."
+      },
+      "certificates": {
+        "question": "Will participation certificates be given?",
+        "answer": "Yes, participation certificates will be given to all teams attending the Bootcamp."
+      },
+      "multipleTeams": {
+        "question": "Can a participant join more than one team?",
+        "answer": "No, a participant can be part of only one team."
+      },
+      "winnerSelection": {
+        "question": "How will winners be selected in the Finals?",
+        "answer": "Judges will evaluate based on innovation, clarity, impact, and presentation skills."
       }
     }
   },
@@ -330,6 +354,7 @@
       "title": "Get in Touch",
       "email": "office.edc@rajalakshmi.edu.in",
       "location": "Tamil Nadu, India",
+      "collegeLocation": "Rajalakshmi Engineering College, Chennai",
       "phone": "Siva Soorya: +91 94885 05516",
       "phone2": "Lekha: +91 73054 23022",
       "hours": "Mon - Fri: 9:00 AM - 6:00 PM"
@@ -338,7 +363,8 @@
       "title": "Follow Us",
       "twitter": "Twitter",
       "linkedin": "LinkedIn",
-      "instagram": "Instagram"
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
     },
     "newsletter": {
       "title": "Stay Updated",
@@ -484,5 +510,19 @@
       "allFieldsRequired": "All fields are required.",
       "genericError": "An error occurred during login. Please try again."
     }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "hackathonInfo": "Hackathon",
+    "copyright": "© 2025 Ezhumi Hackathon. All rights reserved.",
+    "organizerInfo": "Organized by EIDC (Entrepreneurship & Innovation Development Cell), Rajalakshmi Engineering College",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "codeOfConduct": "Code of Conduct",
+    "collegeFullName": "Rajalakshmi Engineering College",
+    "collegeAddress": "Vellore - Chennai Rd, Rajalakshmi Nagar, Thandalam, Meyalurkuppam, Tamil Nadu 602105"
+  },
+  "ui": {
+    "sending": "Sending..."
   }
 }

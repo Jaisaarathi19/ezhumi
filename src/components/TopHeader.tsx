@@ -117,8 +117,8 @@ export const TopHeader: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-gradient-to-br from-green-900/95 via-black/95 to-green-800/95 backdrop-blur-md">
-          <div className="flex items-center justify-center min-h-screen px-4">
+        <div className="fixed inset-0 z-40 bg-gradient-to-br from-green-900/95 via-black/95 to-green-800/95 backdrop-blur-md overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen px-4 py-20">
             <nav className="text-center w-full max-w-lg">
               <div className="space-y-6 sm:space-y-8">
                 <a href="#home" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
