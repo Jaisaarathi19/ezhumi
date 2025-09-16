@@ -204,50 +204,114 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Themes Section */}
-      <section id="themes" className="min-h-screen bg-gradient-to-br from-green-800 via-green-900 to-black text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-6xl w-full relative">
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 h-full">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="border-r border-green-400"></div>
-              ))}
+      {/* Themes Section - Interactive Problem Statements */}
+      <section id="themes" className="min-h-screen bg-gradient-to-br from-green-800 via-green-900 to-black text-white px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{t('themes.title')}</h2>
+            <p className="text-xl text-green-200">{t('themes.subtitle')}</p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Category 1: Crop Health, Water, and Climate */}
+            <div className="bg-green-800/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-green-200">{t('themes.categories.cropHealth.title')}</h3>
+                <span className="text-green-400 text-sm font-medium">8 Problems</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(t('themes.categories.cropHealth.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                  <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
+                    <div className="flex items-start justify-between mb-3">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        problem.type === 'Software' ? 'bg-blue-600/80 text-blue-100' : 'bg-orange-600/80 text-orange-100'
+                      }`}>
+                        {problem.type}
+                      </span>
+                    </div>
+                    <p className="text-sm text-green-100/80 leading-relaxed">{problem.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Category 2: Post-Harvest, Storage, and Food Tech */}
+            <div className="bg-green-800/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-green-200">{t('themes.categories.postHarvest.title')}</h3>
+                <span className="text-green-400 text-sm font-medium">8 Problems</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(t('themes.categories.postHarvest.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                  <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
+                    <div className="flex items-start justify-between mb-3">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
+                      <span className="px-2 py-1 rounded text-xs font-medium bg-orange-600/80 text-orange-100">
+                        {problem.type}
+                      </span>
+                    </div>
+                    <p className="text-sm text-green-100/80 leading-relaxed">{problem.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Category 3: Farm Mechanization, Automation, and Inclusive Tools */}
+            <div className="bg-green-800/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-green-200">{t('themes.categories.mechanization.title')}</h3>
+                <span className="text-green-400 text-sm font-medium">8 Problems</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(t('themes.categories.mechanization.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                  <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
+                    <div className="flex items-start justify-between mb-3">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        problem.type === 'Hardware + Software' ? 'bg-purple-600/80 text-purple-100' : 'bg-orange-600/80 text-orange-100'
+                      }`}>
+                        {problem.type}
+                      </span>
+                    </div>
+                    <p className="text-sm text-green-100/80 leading-relaxed">{problem.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Category 4: Farmer Knowledge, Market, and Research Support */}
+            <div className="bg-green-800/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-green-200">{t('themes.categories.knowledge.title')}</h3>
+                <span className="text-green-400 text-sm font-medium">6 Problems</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(t('themes.categories.knowledge.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                  <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
+                    <div className="flex items-start justify-between mb-3">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        problem.type === 'Hardware + Software' ? 'bg-purple-600/80 text-purple-100' : 'bg-blue-600/80 text-blue-100'
+                      }`}>
+                        {problem.type}
+                      </span>
+                    </div>
+                    <p className="text-sm text-green-100/80 leading-relaxed">{problem.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center relative z-10">{t('themes.title')}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-10">{[
-              {
-                titleKey: "themes.smartFarming.title",
-                descriptionKey: "themes.smartFarming.description"
-              },
-              {
-                titleKey: "themes.sustainableAgriculture.title",
-                descriptionKey: "themes.sustainableAgriculture.description"
-              },
-              {
-                titleKey: "themes.supplyChain.title",
-                descriptionKey: "themes.supplyChain.description"
-              },
-              {
-                titleKey: "themes.cropMonitoring.title",
-                descriptionKey: "themes.cropMonitoring.description"
-              },
-              {
-                titleKey: "themes.marketAccess.title",
-                descriptionKey: "themes.marketAccess.description"
-              },
-              {
-                titleKey: "themes.climateResilience.title",
-                descriptionKey: "themes.climateResilience.description"
-              }
-            ].map((theme, index) => (
-              <div key={index} className="p-4 sm:p-6 rounded-lg bg-green-800/30 backdrop-blur-sm border border-green-400/30 hover:bg-green-700/40 hover:border-green-300/50 transition-all duration-300 shadow-lg">
-                <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-green-200">{t(theme.titleKey)}</h3>
-                <p className="text-sm sm:text-base text-green-100/80 font-light leading-relaxed">{t(theme.descriptionKey)}</p>
-              </div>
-            ))}
+
+          {/* Call to Action */}
+          <div className="text-center mt-12">
+            <p className="text-green-200 mb-6 text-lg">Ready to tackle one of these challenges?</p>
+            <a href="/register">
+              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                Register Your Team
+              </button>
+            </a>
           </div>
         </div>
       </section>

@@ -44,30 +44,209 @@
     }
   },
   "themes": {
-    "title": "Themes",
-    "smartFarming": {
-      "title": "Smart Farming",
-      "description": "IoT solutions for precision agriculture and automated farming systems."
-    },
-    "sustainableAgriculture": {
-      "title": "Sustainable Agriculture",
-      "description": "Eco-friendly practices and technologies for sustainable farming."
-    },
-    "supplyChain": {
-      "title": "Supply Chain",
-      "description": "Blockchain and AI solutions for transparent and efficient supply chains."
-    },
-    "cropMonitoring": {
-      "title": "Crop Monitoring",
-      "description": "Drone and satellite technologies for real-time crop health monitoring."
-    },
-    "marketAccess": {
-      "title": "Market Access",
-      "description": "Digital platforms connecting farmers directly with consumers and markets."
-    },
-    "climateResilience": {
-      "title": "Climate Resilience",
-      "description": "Solutions to help farmers adapt to climate change challenges."
+    "title": "Problem Statements",
+    "subtitle": "Choose your challenge and build innovative solutions",
+    "categories": {
+      "cropHealth": {
+        "title": "Crop Health, Water, and Climate",
+        "problems": [
+          {
+            "id": "ch1",
+            "title": "AI-Powered Crop Disease Detection",
+            "description": "Farmers struggle to detect crop diseases early. Design an AI-powered image processing tool that identifies diseases, weeds, and pest damage in real time.",
+            "type": "Software"
+          },
+          {
+            "id": "ch2", 
+            "title": "Pest Outbreak Prediction System",
+            "description": "Pest outbreaks reduce yields unpredictably. Create an AI tool that predicts outbreaks from weather and imaging data and suggests preventive measures.",
+            "type": "Software"
+          },
+          {
+            "id": "ch3",
+            "title": "Smart Irrigation Valve System", 
+            "description": "Manual irrigation wastes water. Build a smart valve system that auto-controls irrigation based on soil moisture data.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ch4",
+            "title": "Low-Cost Micro-Irrigation System",
+            "description": "Micro-irrigation systems are costly and complex. Develop a low-cost digital micro-irrigation prototype for precise watering.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ch5",
+            "title": "Saline Soil Reclamation Solution",
+            "description": "Saline soils reduce productivity. Create affordable, farmer-friendly solutions to reclaim salt-affected soils.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ch6",
+            "title": "AI Groundwater Exploration Tool",
+            "description": "Groundwater exploration is uncertain. Build an AI/ML model that predicts well viability, depth, and quality using geodata.",
+            "type": "Software"
+          },
+          {
+            "id": "ch7",
+            "title": "Climate Shock Warning System",
+            "description": "Farmers face climate shocks like droughts and floods. Develop AI and satellite-based systems for early warnings and adaptive crop recommendations.",
+            "type": "Software"
+          },
+          {
+            "id": "ch8",
+            "title": "Farm Pollution Monitoring System",
+            "description": "Farmers are unaware of pollution risks. Design a system to monitor air and water quality in farm regions and send timely alerts.",
+            "type": "Hardware"
+          }
+        ]
+      },
+      "postHarvest": {
+        "title": "Post-Harvest, Storage, and Food Tech",
+        "problems": [
+          {
+            "id": "ph1",
+            "title": "Cold Storage Monitoring System",
+            "description": "Cold storage failures cause huge losses. Build a sensor-based system for real-time monitoring and management of cold storage and transport.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph2",
+            "title": "Tomato Thermal Storage Unit",
+            "description": "Tomatoes spoil quickly after harvest. Design a thermally controlled storage unit that extends tomato shelf life.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph3",
+            "title": "Natural Banana Ripening Chamber",
+            "description": "Banana ripening is often done using harmful chemicals. Develop a low-cost, safe, and natural ripening chamber for bananas to improve quality and farmer income.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph4",
+            "title": "Solar Crop Residue Converter",
+            "description": "Crop residues are often burned. Develop modular, solar-powered units that convert residues into compost, bioenergy, or biodegradable packaging.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph5",
+            "title": "Advanced Jaggery Production Unit",
+            "description": "Jaggery units lack hygiene and efficiency. Build advanced infrastructure and mechanization for cleaner jaggery production.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph6",
+            "title": "Milk Quality Testing Device",
+            "description": "Milk adulteration is common. Create a compact device that quickly tests fat, SNF, protein, and adulteration in milk.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph7",
+            "title": "Rapid Commodity Quality Tester",
+            "description": "Farmers face delays and uncertainty in verifying commodity quality at procurement. Develop a rapid, affordable device to test the quality of agricultural commodities during procurement.",
+            "type": "Hardware"
+          },
+          {
+            "id": "ph8",
+            "title": "Rice Mold Detection Biosensor",
+            "description": "Rice grains are often infested with molds during storage. Create a low-cost, biosensor-based device to detect fungal contamination in stored rice early.",
+            "type": "Hardware"
+          }
+        ]
+      },
+      "mechanization": {
+        "title": "Farm Mechanization, Automation, and Inclusive Tools",
+        "problems": [
+          {
+            "id": "fm1",
+            "title": "AI-Powered Farm Robots",
+            "description": "Farm labor shortages increase costs. Develop AI-powered robots or drones for planting, harvesting, spraying, and crop monitoring.",
+            "type": "Hardware + Software"
+          },
+          {
+            "id": "fm2",
+            "title": "Mini Tiller for Clay Soils",
+            "description": "Heavy clay soils make tilling tough. Create a cost-effective mini tiller and leveling machine.",
+            "type": "Hardware"
+          },
+          {
+            "id": "fm3",
+            "title": "Compact Paddy Harvester with Dryer",
+            "description": "Paddy harvesting and drying are inefficient. Design a compact harvester with integrated precision drying for in-field use.",
+            "type": "Hardware"
+          },
+          {
+            "id": "fm4",
+            "title": "Adaptive Farming Tools",
+            "description": "Differently-abled farmers face barriers. Invent adaptive tools that enable mobility- or vision-impaired farmers to work independently.",
+            "type": "Hardware"
+          },
+          {
+            "id": "fm5",
+            "title": "Poultry Heat Stress Controller",
+            "description": "Poultry birds suffer from heat stress. Create an affordable device that maintains optimal 35°C in poultry farms automatically.",
+            "type": "Hardware"
+          },
+          {
+            "id": "fm6",
+            "title": "Smart IoT Greenhouse Controller",
+            "description": "Greenhouses are often mismanaged. Build a smart IoT greenhouse controller with sensors and a mobile app.",
+            "type": "Hardware + Software"
+          },
+          {
+            "id": "fm7",
+            "title": "Palmyra Tree Climbing Device",
+            "description": "Farmers face risk and difficulty climbing palmyra trees to collect sap. Develop a safe, low-cost mechanical climbing device for tapping palmyra trees.",
+            "type": "Hardware"
+          },
+          {
+            "id": "fm8",
+            "title": "Tapioca Harvesting Machine",
+            "description": "Harvesting and cleaning tapioca roots is labor-intensive and inefficient. Create a cost-effective machine to harvest and clean tapioca roots.",
+            "type": "Hardware"
+          }
+        ]
+      },
+      "knowledge": {
+        "title": "Farmer Knowledge, Market, and Research Support",
+        "problems": [
+          {
+            "id": "fk1",
+            "title": "Mobile E-Learning Platform",
+            "description": "Farmers lack access to training. Develop a mobile-based e-learning platform for sustainable farming practices.",
+            "type": "Software"
+          },
+          {
+            "id": "fk2",
+            "title": "Temple Tree Conservation System",
+            "description": "Ancient temple trees are at risk of dying, threatening cultural and ecological heritage. Develop a device or genetic testing protocol to detect live cells in Sthalaviruksha trees for propagation and conservation.",
+            "type": "Hardware + Software"
+          },
+          {
+            "id": "fk3",
+            "title": "Blockchain Crop Certificate System",
+            "description": "Food fraud erodes trust. Design a blockchain-based crop certificate system with QR codes for authenticity verification.",
+            "type": "Software"
+          },
+          {
+            "id": "fk4",
+            "title": "Blockchain Fair-Trade Marketplace",
+            "description": "Farmers earn less due to middlemen. Build a blockchain-based fair-trade marketplace connecting farmers directly to consumers.",
+            "type": "Software"
+          },
+          {
+            "id": "fk5",
+            "title": "Digital Credit Rating System",
+            "description": "Farmers struggle to get loans. Create a digital credit rating system using farm history and microclimate data.",
+            "type": "Software"
+          },
+          {
+            "id": "fk6",
+            "title": "Equipment Sharing Platform",
+            "description": "Machinery is unaffordable for smallholders. Create a digital platform where farmers can rent or share expensive equipment.",
+            "type": "Software"
+          }
+        ]
+      }
     }
   },
   "timeline": {
