@@ -57,7 +57,7 @@ export default function Home() {
     }
 
     try {
-      // EmailJS configuration
+      // EmailJS configuration with detailed logging
       const templateParams = {
         from_name: contactForm.name,
         from_email: contactForm.email,
@@ -66,10 +66,16 @@ export default function Home() {
         to_email: 'office.edc@rajalakshmi.edu.in'
       };
 
+      console.log('Attempting to send email with:', {
+        serviceId: 'service_123456789',
+        templateId: 'template_yad9z3d',
+        params: templateParams
+      });
+
       // Send email using EmailJS
       const result = await emailjs.send(
-        'service_puxchye', // Your service ID
-        'template_el2wgzo', // Template ID (you'll need to create this in EmailJS dashboard)
+        'service_123456789', // Your actual service ID
+        'template_yad9z3d', // Template ID
         templateParams
       );
 
@@ -87,22 +93,29 @@ export default function Home() {
         email: '',
         message: ''
       });
-    } catch (error: any) {
-      console.error('Failed to send email:', error);
+    } catch (error: unknown) {
+      console.error('EmailJS Error Details:', error);
       
       // More specific error messages
       let errorMessage = 'Failed to send message. ';
+      const emailError = error as { status?: number; text?: string; message?: string };
       
-      if (error.status === 400) {
-        errorMessage += 'Please check your internet connection and try again.';
-      } else if (error.status === 402) {
+      console.log('Error status:', emailError?.status);
+      console.log('Error text:', emailError?.text);
+      console.log('Error message:', emailError?.message);
+      
+      if (emailError?.status === 400) {
+        errorMessage += 'Configuration issue with EmailJS service or template. Please contact us directly at office.edc@rajalakshmi.edu.in';
+      } else if (emailError?.status === 402) {
         errorMessage += 'Email service quota exceeded. Please contact us directly.';
-      } else if (error.text?.includes('template')) {
-        errorMessage += 'Email template configuration issue. Please contact us directly.';
-      } else if (error.text?.includes('service')) {
-        errorMessage += 'Email service configuration issue. Please contact us directly.';
+      } else if (emailError?.text?.includes('template')) {
+        errorMessage += 'Email template not found. Please contact us directly.';
+      } else if (emailError?.text?.includes('service')) {
+        errorMessage += 'Email service not configured. Please contact us directly.';
+      } else if (emailError?.message?.includes('network')) {
+        errorMessage += 'Please check your internet connection and try again.';
       } else {
-        errorMessage += 'Please try again later or contact us directly at office.edc@rajalakshmi.edu.in';
+        errorMessage += `Please contact us directly at office.edc@rajalakshmi.edu.in or call +91-9876543210`;
       }
       
       setSubmitStatus({ 
