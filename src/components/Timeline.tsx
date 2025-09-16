@@ -184,7 +184,7 @@ export const Timeline: React.FC = () => {
           <p className={`text-sm sm:text-base text-green-500 mt-3 max-w-xl mx-auto italic transition-all duration-1000 delay-700 ${
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            * 24-hour hackathon, final pitch, and valedictory dates are tentative and subject to change
+            * Oct 13, 14, and 16 are tentative dates and subject to change
           </p>
         </div>
         
