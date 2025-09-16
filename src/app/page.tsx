@@ -527,6 +527,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Registration CTA */}
+          <div className="text-center mt-16 relative z-10">
+            <a href="/register">
+              <button className="px-12 py-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 border border-green-400 text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-500 text-lg transform hover:-translate-y-1">
+                {t('contact.cta.registerButton')}
+              </button>
+            </a>
+          </div>
+
       {/* Contact Section */}
       <section id="contact" className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-black text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-6xl w-full relative">
@@ -703,14 +712,7 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Registration CTA */}
-          <div className="text-center mt-16 relative z-10">
-            <a href="/register">
-              <button className="px-12 py-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 border border-green-400 text-white font-medium shadow-lg hover:shadow-xl hover:shadow-green-500/30 transition-all duration-500 text-lg transform hover:-translate-y-1">
-                {t('contact.cta.registerButton')}
-              </button>
-            </a>
-          </div>
+          
         </div>
       </section>
 
