@@ -147,8 +147,8 @@ export const TopHeader: React.FC = () => {
                   </a>
                 )}
                 
-                {/* Authentication Section */}
-                {user ? (
+                {/* Authentication Section - Only show if user is authenticated */}
+                {user && (
                   <div className="pt-6 sm:pt-8 border-t border-white/20">
                     <div className="text-center space-y-4">
                       <div className="text-2xl sm:text-4xl lg:text-5xl font-light text-green-300 font-grotesk">
@@ -165,15 +165,6 @@ export const TopHeader: React.FC = () => {
                       </button>
                     </div>
                   </div>
-                ) : (
-                  <>
-                    <a href="/login" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                      {t('nav.login')}
-                    </a>
-                    <a href="/signup" className="block text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-green-300 transition-colors font-grotesk" onClick={toggleMenu}>
-                      {t('nav.signup')}
-                    </a>
-                  </>
                 )}
                 
                 {/* Language Switcher - Mobile only */}
