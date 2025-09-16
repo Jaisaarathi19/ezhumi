@@ -123,51 +123,67 @@ export const Timeline: React.FC = () => {
 
   const events: TimelineEvent[] = [
     {
-      date: "December 15, 2024",
-      title: t('timeline.events.registrationOpens.title'),
-      description: t('timeline.events.registrationOpens.description'),
-      time: t('timeline.events.registrationOpens.time'),
+      date: "September 17, 2024",
+      title: "Registrations Open",
+      description: "Online registration for EZHUMI hackathon begins. Students can sign up and form teams.",
+      time: "All Day",
       icon: "🚀",
       status: "upcoming"
     },
     {
-      date: "January 10, 2025",
-      title: t('timeline.events.registrationDeadline.title'),
-      description: t('timeline.events.registrationDeadline.description'),
-      time: t('timeline.events.registrationDeadline.time'),
+      date: "October 1, 2024",
+      title: "Registration Deadline",
+      description: "Last date to register for the hackathon. Make sure to complete your registration before time runs out.",
+      time: "11:59 PM",
       icon: "⏰",
       status: "upcoming"
     },
     {
-      date: "January 15, 2025",
-      title: t('timeline.events.teamSelection.title'),
-      description: t('timeline.events.teamSelection.description'),
-      time: t('timeline.events.teamSelection.time'),
+      date: "October 4, 2024",
+      title: "Shortlisted Participants Announcement",
+      description: "List of selected participants will be announced. Check your email for confirmation.",
+      time: "5:00 PM",
       icon: "✅",
       status: "upcoming"
     },
     {
-      date: "February 1-2, 2025",
-      title: t('timeline.events.hackathonWeekend.title'),
-      description: t('timeline.events.hackathonWeekend.description'),
-      time: t('timeline.events.hackathonWeekend.time'),
+      date: "October 6, 2024",
+      title: "Inauguration & Bootcamp",
+      description: "Official inauguration of EZHUMI followed by intensive bootcamp sessions for participants.",
+      time: "9:00 AM",
+      icon: "🎉",
+      status: "upcoming"
+    },
+    {
+      date: "October 7, 2024",
+      title: "Industrial Visit",
+      description: "Educational visit to partner industries to understand real-world applications and technologies.",
+      time: "8:00 AM",
+      icon: "🏭",
+      status: "upcoming"
+    },
+    {
+      date: "October 13, 2024",
+      title: "24-Hour Hackathon",
+      description: "The main event! 24 hours of continuous coding, innovation, and problem-solving.",
+      time: "9:00 AM - 9:00 AM (Next Day)",
       icon: "💻",
       status: "featured"
     },
     {
-      date: "February 2, 2025",
-      title: t('timeline.events.finalPresentations.title'),
-      description: t('timeline.events.finalPresentations.description'),
-      time: t('timeline.events.finalPresentations.time'),
+      date: "October 14, 2024",
+      title: "Final Pitch Presentations",
+      description: "Shortlisted teams present their solutions to the jury panel for final evaluation.",
+      time: "10:00 AM",
       icon: "🏆",
       status: "featured"
     },
     {
-      date: "February 15, 2025",
-      title: t('timeline.events.incubationProgram.title'),
-      description: t('timeline.events.incubationProgram.description'),
-      time: t('timeline.events.incubationProgram.time'),
-      icon: "🌱",
+      date: "October 16, 2024",
+      title: "Valedictory Programme",
+      description: "Closing ceremony with prize distribution and recognition of outstanding participants.",
+      time: "6:00 PM",
+      icon: "�",
       status: "future"
     }
   ];
@@ -197,6 +213,11 @@ export const Timeline: React.FC = () => {
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
             {t('timeline.subtitle')}
+          </p>
+          <p className={`text-sm sm:text-base text-green-500 mt-3 max-w-xl mx-auto italic transition-all duration-1000 delay-700 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            * All dates are tentative and subject to change
           </p>
         </div>
         
