@@ -8,6 +8,13 @@ import { Hero } from '@/components/Hero';
 import { TopHeader } from '@/components/TopHeader';
 import { Timeline } from '@/components/Timeline';
 
+interface Problem {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+}
+
 export default function Home() {
   const { t } = useTranslation('common');
   
@@ -220,7 +227,7 @@ export default function Home() {
                 <span className="text-green-400 text-sm font-medium">8 Problems</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {(t('themes.categories.cropHealth.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                {(t('themes.categories.cropHealth.problems', { returnObjects: true }) as Problem[]).map((problem: Problem) => (
                   <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
@@ -243,7 +250,7 @@ export default function Home() {
                 <span className="text-green-400 text-sm font-medium">8 Problems</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {(t('themes.categories.postHarvest.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                {(t('themes.categories.postHarvest.problems', { returnObjects: true }) as Problem[]).map((problem: Problem) => (
                   <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
@@ -264,7 +271,7 @@ export default function Home() {
                 <span className="text-green-400 text-sm font-medium">8 Problems</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {(t('themes.categories.mechanization.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                {(t('themes.categories.mechanization.problems', { returnObjects: true }) as Problem[]).map((problem: Problem) => (
                   <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
@@ -287,7 +294,7 @@ export default function Home() {
                 <span className="text-green-400 text-sm font-medium">6 Problems</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {(t('themes.categories.knowledge.problems', { returnObjects: true }) as any[]).map((problem: any, index: number) => (
+                {(t('themes.categories.knowledge.problems', { returnObjects: true }) as Problem[]).map((problem: Problem) => (
                   <div key={problem.id} className="bg-green-900/40 rounded-lg p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer group">
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-lg font-semibold text-white group-hover:text-green-200 transition-colors">{problem.title}</h4>
