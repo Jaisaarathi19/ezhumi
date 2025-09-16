@@ -307,16 +307,17 @@ npm run build
 
 ## 📄 License
 
-This project is created for the Ezhumi Hackathon organized by the Entrepreneurship Development Cell, Rajalakshmi Engineering College.
+This project is created for the Ezhumi Hackathon organized by the EIDC (Entrepreneurship & Innovation Development Cell), Rajalakshmi Engineering College.
 
 ## 🏫 About
 
-**Organized by**: Entrepreneurship Development Cell  
+**Organized by**: EIDC (Entrepreneurship & Innovation Development Cell)  
 **Institution**: Rajalakshmi Engineering College  
 **Location**: Vellore - Chennai Rd, Rajalakshmi Nagar, Thandalam, Meyalurkuppam, Tamil Nadu 602105  
 
 ---
 
 **Built with 💚 for sustainable agriculture innovation**
-#   E z h u m i  
+#   E z h u m i 
+ 
  

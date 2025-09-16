@@ -565,7 +565,7 @@ export default function Home() {
                 © 2025 Ezhumi Hackathon. All rights reserved.
               </p>
               <p className="text-green-200/50 text-xs mt-1">
-                Organized by Entrepreneurship Development Cell, Rajalakshmi Engineering College
+                Organized by EIDC (Entrepreneurship & Innovation Development Cell), Rajalakshmi Engineering College
               </p>
             </div>
             
