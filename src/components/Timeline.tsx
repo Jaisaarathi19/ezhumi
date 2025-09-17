@@ -143,7 +143,7 @@ export const Timeline: React.FC = () => {
     },
     {
       date: "October 14, 2025 *", 
-      title: "Final Pitch (Project Exhibition)",
+      title: "Final Pitch (Product Exhibition)",
       description: "Shortlisted teams present their solutions to the jury panel for final evaluation and project exhibition. *Tentative date - subject to change.",
       status: "featured"
     },
