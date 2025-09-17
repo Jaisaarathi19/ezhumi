@@ -190,18 +190,18 @@ export default function Home() {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 text-green-800 leading-tight text-center lg:text-left">
                   {t('about.title')}
                 </h2>
-                <div className="space-y-4 lg:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-green-700">
-                  <p className="font-medium">
+                <div className="space-y-4 lg:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-green-700 text-justify">
+                  <p className="font-medium text-justify">
                     <span className="text-green-800 font-bold">{t('about.wakeUpCall')}</span> 
                     {" "}{t('about.callToAction')}
                   </p>
-                  <p>
+                  <p className="text-justify">
                     {t('about.description1')}
                   </p>
-                  <p>
+                  <p className="text-justify">
                     {t('about.description2')}
                   </p>
-                  <p className="bg-green-200/50 p-3 lg:p-4 rounded-lg border-l-4 border-green-600">
+                  <p className="bg-green-200/50 p-3 lg:p-4 rounded-lg border-l-4 border-green-600 text-justify">
                     {t('about.incubationInfo')}
                   </p>
                 </div>

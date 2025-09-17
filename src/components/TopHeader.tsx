@@ -84,20 +84,82 @@ export const TopHeader: React.FC = () => {
           </div>
 
           {/* Center - Partner Logos */}
-          <div className="flex items-center space-x-3 lg:space-x-4 absolute left-[60%] sm:left-[52%] lg:left-1/2 transform -translate-x-1/2">
+          {/* Mobile Scrolling Logos */}
+          <div className="lg:hidden absolute left-[60%] transform -translate-x-1/2 w-24 overflow-hidden">
+            <div className="flex animate-scroll-logos whitespace-nowrap">
+              {/* First set of logos */}
+              <div className="flex items-center space-x-6 flex-shrink-0">
+                <Image
+                  src="/logos/rec-logo.svg"
+                  alt="REC - Rajalakshmi Engineering College"
+                  width={40}
+                  height={40}
+                  className="w-20 h-12 sm:w-20 sm:h-12 flex-shrink-0"
+                />
+                <Image
+                  src="/logos/riif_logo.svg"
+                  alt="RIIF - Research and Innovation Incubation Foundation"
+                  width={40}
+                  height={40}
+                  className="w-12 h-12 sm:w-12 sm:h-12 flex-shrink-0"
+                />
+                <Image
+                  src="/logos/edc-logo.svg"
+                  alt="EDC - Entrepreneurship Development Cell"
+                  width={40}
+                  height={40}
+                  className="w-12 h-12 sm:w-12 sm:h-12 flex-shrink-0"
+                />
+              </div>
+              {/* Duplicate set for seamless loop */}
+              <div className="flex items-center space-x-6 flex-shrink-0 ml-6">
+                <Image
+                  src="/logos/rec-logo.svg"
+                  alt="REC - Rajalakshmi Engineering College"
+                  width={40}
+                  height={40}
+                  className="w-20 h-12 sm:w-20 sm:h-12 flex-shrink-0"
+                />
+                <Image
+                  src="/logos/riif_logo.svg"
+                  alt="RIIF - Research and Innovation Incubation Foundation"
+                  width={40}
+                  height={40}
+                  className="w-18 h-18 sm:w-18 sm:h-18 flex-shrink-0"
+                />
+                <Image
+                  src="/logos/edc-logo.svg"
+                  alt="EDC - Entrepreneurship Development Cell"
+                  width={40}
+                  height={40}
+                  className="w-12 h-12 sm:w-12 sm:h-12 flex-shrink-0"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Static Logos */}
+          <div className="hidden lg:flex items-center space-x-4 absolute left-1/2 transform -translate-x-1/2">
             <Image
               src="/logos/rec-logo.svg"
               alt="REC - Rajalakshmi Engineering College"
               width={60}
               height={60}
-              className="w-25 h-10 sm:w-40 sm:h-20 lg:w-40 lg:h-20 xl:w-38 xl:h-16"
+              className="w-14 h-14 xl:w-35 xl:h-16"
+            />
+            <Image
+              src="/logos/riif_logo.svg"
+              alt="RIIF - Research and Innovation Incubation Foundation"
+              width={60}
+              height={60}
+              className="w-14 h-14 xl:w-30 xl:h-30"
             />
             <Image
               src="/logos/edc-logo.svg"
               alt="EDC - Entrepreneurship Development Cell"
               width={60}
               height={60}
-              className="w-15 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 xl:w-25 xl:h-16"
+              className="w-14 h-14 xl:w-18 xl:h-18"
             />
           </div>
 
