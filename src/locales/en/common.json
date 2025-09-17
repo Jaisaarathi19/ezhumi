@@ -294,10 +294,6 @@
   "faqs": {
     "title": "FAQ – Ezhumi Bootcamp",
     "questions": {
-      "eventFlow": {
-        "question": "What is the event flow of Ezhumi?",
-        "answer": "• Round 1: Online Project Submission – Open to all students & innovators (No entry fee).\n• Jury Evaluation – Projects shortlisted based on innovation & creativity.\n• Top 50 Teams Selection – Jury will select the best 50 teams.\n• Boot camp + Finals – The 50 selected teams will attend the Boot camp and directly pitch in the Finals (Boot camp fee applicable)."
-      },
       "teamSize": {
         "question": "How many members can be in a team?",
         "answer": "A team can have 2 to 4 members."
